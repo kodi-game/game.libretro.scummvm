@@ -17,8 +17,6 @@
 		<supports_standalone>true</supports_standalone>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary lang="en_GB">ScummVM 2.1.1</summary>
-		<description lang="en_GB">ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.
 
 Supported files: .scummvm</description>
 		<license>GPLv2</license>
@@ -31,5 +29,9 @@ Supported files: .scummvm</description>
 			<screenshot>resources/screenshot-02.jpg</screenshot>
 			<screenshot>resources/screenshot-03.jpg</screenshot>
 		</assets>
+		<summary lang="en_GB">ScummVM 2.1.1</summary>
+		<description lang="en_GB">ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.
+
+Supported files: .scummvm</description>
 	</extension>
 </addon>

@@ -16,6 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n % 10 != 1 || n % 100 == 11;\n"
 
+msgctxt "Addon Summary"
+msgid "ScummVM 2.1.1"
+msgstr ""
+
+msgctxt "Addon Description"
+msgid "ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.
+
+Supported files: .scummvm"
+msgstr ""
+
 msgctxt "#30000"
 msgid "Settings"
 msgstr ""
