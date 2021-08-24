@@ -28,6 +28,6 @@
 			<screenshot>resources/screenshot-03.jpg</screenshot>
 		</assets>
 		<summary lang="en_GB">ScummVM 2.1.1</summary>
-		<description lang="en_GB">ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.</description>
+		<description lang="en_GB">ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.Supported files: .scummvm</description>
 	</extension>
 </addon>
