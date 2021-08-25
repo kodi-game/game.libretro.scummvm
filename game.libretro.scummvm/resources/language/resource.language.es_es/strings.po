@@ -22,7 +22,7 @@ msgid "ScummVM 2.1.1"
 msgstr ""
 
 msgctxt "Addon Description"
-msgid "ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.Supported files: .scummvm"
+msgid "ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games."
 msgstr ""
 
 msgctxt "#30000"
