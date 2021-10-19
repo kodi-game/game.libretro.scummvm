@@ -4,9 +4,11 @@
 # ScummVM
 
 ### Description
+
 ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.
 
 ### License
+
 GPLv2
 
 ### Icon
@@ -20,9 +22,5 @@ GPLv2
 ### Screenshots
 
 ![Screenshot](game.libretro.scummvm/resources/screenshot-01.jpg)
-
 ![Screenshot](game.libretro.scummvm/resources/screenshot-02.jpg)
-
 ![Screenshot](game.libretro.scummvm/resources/screenshot-03.jpg)
-
-
