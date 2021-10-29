@@ -1,0 +1,33 @@
+From d0635b11cdd01efd66a207e99014b7a509adf328 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Thu, 28 Oct 2021 17:37:49 -0700
+Subject: [PATCH 3/3] libretro: Enable touchscreen control
+
+---
+ backends/platform/libretro/libretro_os.cpp | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/backends/platform/libretro/libretro_os.cpp b/backends/platform/libretro/libretro_os.cpp
+index a94fd87e07..382f7bf9fb 100644
+--- a/backends/platform/libretro/libretro_os.cpp
++++ b/backends/platform/libretro/libretro_os.cpp
+@@ -988,7 +988,6 @@ class OSystem_RETRO : public EventsBaseBackend, public PaletteManager {
+             }
+          }
+ 
+-#if defined(WIIU) || defined(__SWITCH__)
+ 	int p_x = aCallback(0, RETRO_DEVICE_POINTER, 0, RETRO_DEVICE_ID_POINTER_X);
+ 	int p_y = aCallback(0, RETRO_DEVICE_POINTER, 0, RETRO_DEVICE_ID_POINTER_Y);
+ 	int p_press  = aCallback(0, RETRO_DEVICE_POINTER, 0,RETRO_DEVICE_ID_POINTER_PRESSED);
+@@ -1029,8 +1028,6 @@ class OSystem_RETRO : public EventsBaseBackend, public PaletteManager {
+             _events.push_back(ev);
+ 	}
+ 
+-#endif
+-
+          if (do_joystick)
+          {
+             Common::Event ev;
+-- 
+2.30.2
+
