@@ -1,0 +1,79 @@
+From 775ca49976c39231eaf1de9a160cfdbcb5e75483 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Thu, 28 Oct 2021 17:37:32 -0700
+Subject: [PATCH] libretro: Set default theme/extra path to sys dir
+
+---
+ backends/platform/libretro/libretro_os.cpp |  4 ++++
+ gui/ThemeEngine.cpp                        |  2 +-
+ gui/options.cpp                            | 10 +++++-----
+ 3 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/backends/platform/libretro/libretro_os.cpp b/backends/platform/libretro/libretro_os.cpp
+index 0e5a7dd32b..a94fd87e07 100644
+--- a/backends/platform/libretro/libretro_os.cpp
++++ b/backends/platform/libretro/libretro_os.cpp
+@@ -31,6 +31,7 @@
+ 
+ #include "graphics/surface.libretro.h"
+ #include "backends/base-backend.h"
++#include "common/config-manager.h"
+ #include "common/events.h"
+ #include "audio/mixer_intern.h"
+ 
+@@ -1284,6 +1285,9 @@ void retroPostQuit()
+ void retroSetSystemDir(const char* aPath)
+ {
+    s_systemDir = Common::String(aPath ? aPath : ".");
++
++   ConfMan.registerDefault("themepath", s_systemDir + "/scummvm/theme");
++   ConfMan.registerDefault("extrapath", s_systemDir + "/scummvm/extra");
+ }
+ 
+ void retroSetSaveDir(const char* aPath)
+diff --git a/gui/ThemeEngine.cpp b/gui/ThemeEngine.cpp
+index dd074ccef3..725d74b597 100644
+--- a/gui/ThemeEngine.cpp
++++ b/gui/ThemeEngine.cpp
+@@ -1699,7 +1699,7 @@ void ThemeEngine::listUsableThemes(Common::List<ThemeDescriptor> &list) {
+ 	list.push_back(th);
+ #endif
+ 
+-	if (ConfMan.hasKey("themepath"))
++	if (!ConfMan.get("themepath").empty())
+ 		listUsableThemes(Common::FSNode(ConfMan.get("themepath")), list);
+ 
+ 	listUsableThemes(SearchMan, list);
+diff --git a/gui/options.cpp b/gui/options.cpp
+index 6dd250c615..a66ccfcdcc 100644
+--- a/gui/options.cpp
++++ b/gui/options.cpp
+@@ -1842,20 +1842,20 @@ void GlobalOptionsDialog::build() {
+ 	Common::String themePath(ConfMan.get("themepath", _domain));
+ 	Common::String extraPath(ConfMan.get("extrapath", _domain));
+ 
+-	if (savePath.empty() || !ConfMan.hasKey("savepath", _domain)) {
++	if (savePath.empty()) {
+ 		_savePath->setLabel(_("Default"));
+ 	} else {
+ 		_savePath->setLabel(savePath);
+ 	}
+ 
+-	if (themePath.empty() || !ConfMan.hasKey("themepath", _domain)) {
+-		_themePath->setLabel(_c("None", "path"));
++	if (themePath.empty()) {
++		_themePath->setLabel(_("Default"));
+ 	} else {
+ 		_themePath->setLabel(themePath);
+ 	}
+ 
+-	if (extraPath.empty() || !ConfMan.hasKey("extrapath", _domain)) {
+-		_extraPath->setLabel(_c("None", "path"));
++	if (extraPath.empty()) {
++		_extraPath->setLabel(_("Default"));
+ 	} else {
+ 		_extraPath->setLabel(extraPath);
+ 	}
+-- 
+2.30.2
+
