@@ -25,6 +25,12 @@
     <feature name="right" mapto="RETRO_DEVICE_ID_MOUSE_RIGHT"/>
     <feature name="pointer" mapto="RETRO_DEVICE_MOUSE"/>
   </controller>
+  <!-- TODO
+  <controller id="game.controller.touchscreen" type="RETRO_DEVICE_POINTER">
+    <feature name="pressed" mapto="RETRO_DEVICE_ID_POINTER_PRESSED"/>
+    <feature name="pointer" mapto="RETRO_DEVICE_POINTER"/>
+  </controller>
+  -->
   <controller id="game.controller.keyboard" type="RETRO_DEVICE_KEYBOARD">
     <feature name="backspace" mapto="RETROK_BACKSPACE"/>
     <feature name="tab" mapto="RETROK_TAB"/>
