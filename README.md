@@ -9,7 +9,7 @@ ScummVM is a collection of game engine recreations. ScummVM emulates several sys
 
 ### License
 
-GPLv3
+GPLv2
 
 ### Icon
 

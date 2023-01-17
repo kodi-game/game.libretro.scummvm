@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="game.libretro.scummvm"
 		name="ScummVM"
-		version="0.0.1.26"
+		version="2.1.1.25"
 		provider-name="SCUMMVMdev">
 	<requires>
 		<import addon="game.libretro" version="1.0.0"/>
@@ -18,7 +18,7 @@
 		<requires_opengl>false</requires_opengl>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<license>GPLv3</license>
+		<license>GPLv2</license>
 		<platform>@PLATFORM@</platform>
 		<source>https://github.com/kodi-game/game.libretro.scummvm</source>
 		<assets>
