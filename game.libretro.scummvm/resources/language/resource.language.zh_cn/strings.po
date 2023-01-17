@@ -34,17 +34,37 @@ msgid "Gamepad Cursor Speed"
 msgstr "游戏手柄光标速度"
 
 msgctxt "#30002"
-msgid "Analog Cursor Response"
-msgstr "模拟光标响应"
+msgid "Gamepad Cursor Acceleration"
+msgstr ""
 
 msgctxt "#30003"
-msgid "Analog Deadzone (Percent)"
-msgstr "模拟死区（百分比）"
+msgid "Analog Cursor Response"
+msgstr ""
 
 msgctxt "#30004"
-msgid "Mouse Speed"
-msgstr "鼠标速度"
+msgid "Analog Deadzone (Percent)"
+msgstr ""
 
 msgctxt "#30005"
+msgid "Mouse Speed"
+msgstr ""
+
+msgctxt "#30006"
 msgid "Speed Hack (Restart)"
-msgstr "Speed Hack（重新启动）"
+msgstr ""
+
+#~ msgctxt "#30002"
+#~ msgid "Analog Cursor Response"
+#~ msgstr "模拟光标响应"
+
+#~ msgctxt "#30003"
+#~ msgid "Analog Deadzone (Percent)"
+#~ msgstr "模拟死区（百分比）"
+
+#~ msgctxt "#30004"
+#~ msgid "Mouse Speed"
+#~ msgstr "鼠标速度"
+
+#~ msgctxt "#30005"
+#~ msgid "Speed Hack (Restart)"
+#~ msgstr "Speed Hack（重新启动）"

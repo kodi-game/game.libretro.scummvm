@@ -34,17 +34,29 @@ msgid "Gamepad Cursor Speed"
 msgstr ""
 
 msgctxt "#30002"
-msgid "Analog Cursor Response"
-msgstr "Analoginen osoittimen vaste"
+msgid "Gamepad Cursor Acceleration"
+msgstr ""
 
 msgctxt "#30003"
-msgid "Analog Deadzone (Percent)"
-msgstr "Analoginen kuollut alue (prosenttia)"
+msgid "Analog Cursor Response"
+msgstr ""
 
 msgctxt "#30004"
-msgid "Mouse Speed"
+msgid "Analog Deadzone (Percent)"
 msgstr ""
 
 msgctxt "#30005"
+msgid "Mouse Speed"
+msgstr ""
+
+msgctxt "#30006"
 msgid "Speed Hack (Restart)"
 msgstr ""
+
+#~ msgctxt "#30002"
+#~ msgid "Analog Cursor Response"
+#~ msgstr "Analoginen osoittimen vaste"
+
+#~ msgctxt "#30003"
+#~ msgid "Analog Deadzone (Percent)"
+#~ msgstr "Analoginen kuollut alue (prosenttia)"
