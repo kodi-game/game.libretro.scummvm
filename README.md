@@ -13,14 +13,14 @@ GPLv3
 
 ### Icon
 
-![Icon](game.libretro.scummvm/resources/icon.png)
+![ScummVM icon](game.libretro.scummvm/resources/icon.png)
 
 ### Fanart
 
-![Fanart](game.libretro.scummvm/resources/fanart.jpg)
+![ScummVM fanart](game.libretro.scummvm/resources/fanart.jpg)
 
 ### Screenshots
 
-![Screenshot](game.libretro.scummvm/resources/screenshot-01.jpg)
-![Screenshot](game.libretro.scummvm/resources/screenshot-02.jpg)
-![Screenshot](game.libretro.scummvm/resources/screenshot-03.jpg)
+![ScummVM screenshot](game.libretro.scummvm/resources/screenshot-01.jpg)
+![ScummVM screenshot](game.libretro.scummvm/resources/screenshot-02.jpg)
+![ScummVM screenshot](game.libretro.scummvm/resources/screenshot-03.jpg)
