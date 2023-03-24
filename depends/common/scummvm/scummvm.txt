@@ -1,1 +1,1 @@
-scummvm https://github.com/kodi-game/scummvm/archive/0b219a46770776e10c954c6242870928113cacc0.tar.gz
+scummvm https://github.com/libretro/scummvm-wrapper/archive/2a272d90dcf2783c7866b866e43912c05a4bfc4b.tar.gz
