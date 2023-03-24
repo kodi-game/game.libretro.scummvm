@@ -1,0 +1,26 @@
+From cf17fc722daffdc8758ef3859598060958c9b7af Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Fri, 24 Mar 2023 12:56:19 -0700
+Subject: [PATCH 3/3] Fix missing theme/extra paths
+
+---
+ src/libretro-os.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/libretro-os.cpp b/src/libretro-os.cpp
+index 3b52467..d711175 100644
+--- a/src/libretro-os.cpp
++++ b/src/libretro-os.cpp
+@@ -398,6 +398,9 @@ public:
+ 
+ 		_mixer->setReady(true);
+ 
++		ConfMan.registerDefault("themepath", s_systemDir + "/scummvm/themes");
++		ConfMan.registerDefault("extrapath", s_systemDir + "/scummvm/extras");
++
+ 		EventsBaseBackend::initBackend();
+ 	}
+ 
+-- 
+2.34.1
+

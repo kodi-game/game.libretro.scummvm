@@ -1,7 +1,7 @@
-From 9d4e078e96c950f6b2d8977d08390844cd9aa62c Mon Sep 17 00:00:00 2001
+From 78382e272d00a0bc4d564cff796c005b925b12e1 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
-Date: Thu, 28 Oct 2021 16:00:20 -0700
-Subject: [PATCH 2/2] libretro: Move scummvm.ini to writable save directory
+Date: Fri, 24 Mar 2023 12:33:47 -0700
+Subject: [PATCH 2/3] libretro: Move scummvm.ini to writable save directory
 
 ---
  src/libretro-os.cpp | 2 +-
