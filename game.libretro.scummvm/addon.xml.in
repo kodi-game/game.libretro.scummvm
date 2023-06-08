@@ -31,6 +31,7 @@
 		<summary lang="da_DK">ScummVM</summary>
 		<summary lang="en_GB">ScummVM</summary>
 		<summary lang="es_ES">ScummVM</summary>
+		<summary lang="zh_CN">ScummVM</summary>
 		<description lang="da_DK">ScummVM er en samling af spilmotorer. ScummVM emulerer flere systemer, inklusiv SCUMM-systemet til LucasArts eventyrspil.</description>
 		<description lang="de_DE">ScummVM ist eine Sammlung von Spiel-Engine-Nachbildungen. ScummVM emuliert mehrere Systeme, darunter das SCUMM-System für Adventure-Games von LucasArts.</description>
 		<description lang="en_GB">ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games.</description>
