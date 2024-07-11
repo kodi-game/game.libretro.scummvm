@@ -1,1 +1,1 @@
-scummvm https://github.com/libretro/scummvm-wrapper/archive/2a272d90dcf2783c7866b866e43912c05a4bfc4b.tar.gz
+scummvm https://github.com/libretro/scummvm/archive/8ce898dcc55e56b75b12ba2a5023bb062e918198.tar.gz
