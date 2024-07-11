@@ -29,26 +29,154 @@ msgctxt "#30000"
 msgid "Settings"
 msgstr "Настройки"
 
-msgctxt "#30001"
-msgid "Gamepad Cursor Speed"
+msgctxt "#30007"
+msgid "Cursor > Exclusive cursor control with RetroPad"
 msgstr ""
 
-msgctxt "#30002"
-msgid "Gamepad Cursor Acceleration"
+msgctxt "#30008"
+msgid "Cursor > Gamepad Cursor Speed"
 msgstr ""
 
-msgctxt "#30003"
-msgid "Analog Cursor Response"
+msgctxt "#30009"
+msgid "Cursor > Gamepad Cursor Acceleration"
 msgstr ""
 
-msgctxt "#30004"
-msgid "Analog Deadzone (Percent)"
+msgctxt "#30010"
+msgid "Cursor > Analog Cursor Response"
 msgstr ""
 
-msgctxt "#30005"
-msgid "Mouse Speed"
+msgctxt "#30011"
+msgid "Cursor > Analog Deadzone"
 msgstr ""
 
-msgctxt "#30006"
-msgid "Speed Hack (Restart)"
+msgctxt "#30012"
+msgid "Cursor > Mouse Speed"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Cursor > Mouse Fine Control Speed Reduction"
+msgstr ""
+
+msgctxt "#30014"
+msgid "Frameskip > Frameskip Mode"
+msgstr ""
+
+msgctxt "#30015"
+msgid "Frameskip > Frameskip Threshold (%)"
+msgstr ""
+
+msgctxt "#30016"
+msgid "Frameskip > Fixed Frameskip"
+msgstr ""
+
+msgctxt "#30017"
+msgid "Timing > Allow Timing Inaccuracies"
+msgstr ""
+
+msgctxt "#30018"
+msgid "Timing > Frame rate cap"
+msgstr ""
+
+msgctxt "#30019"
+msgid "Timing > Sample rate"
+msgstr ""
+
+msgctxt "#30020"
+msgid "RetroPad > Up"
+msgstr ""
+
+msgctxt "#30021"
+msgid "RetroPad > Down"
+msgstr ""
+
+msgctxt "#30022"
+msgid "RetroPad > Left"
+msgstr ""
+
+msgctxt "#30023"
+msgid "RetroPad > Right"
+msgstr ""
+
+msgctxt "#30024"
+msgid "RetroPad > A"
+msgstr ""
+
+msgctxt "#30025"
+msgid "RetroPad > B"
+msgstr ""
+
+msgctxt "#30026"
+msgid "RetroPad > X"
+msgstr ""
+
+msgctxt "#30027"
+msgid "RetroPad > Y"
+msgstr ""
+
+msgctxt "#30028"
+msgid "RetroPad > Select"
+msgstr ""
+
+msgctxt "#30029"
+msgid "RetroPad > Start"
+msgstr ""
+
+msgctxt "#30030"
+msgid "RetroPad > L"
+msgstr ""
+
+msgctxt "#30031"
+msgid "RetroPad > R"
+msgstr ""
+
+msgctxt "#30032"
+msgid "RetroPad > L2"
+msgstr ""
+
+msgctxt "#30033"
+msgid "RetroPad > R2"
+msgstr ""
+
+msgctxt "#30034"
+msgid "RetroPad > L3"
+msgstr ""
+
+msgctxt "#30035"
+msgid "RetroPad > R3"
+msgstr ""
+
+msgctxt "#30036"
+msgid "RetroPad > Left Analog > Up"
+msgstr ""
+
+msgctxt "#30037"
+msgid "RetroPad > Left Analog > Down"
+msgstr ""
+
+msgctxt "#30038"
+msgid "RetroPad > Left Analog > Left"
+msgstr ""
+
+msgctxt "#30039"
+msgid "RetroPad > Left Analog > Right"
+msgstr ""
+
+msgctxt "#30040"
+msgid "RetroPad > Right Analog > Up"
+msgstr ""
+
+msgctxt "#30041"
+msgid "RetroPad > Right Analog > Down"
+msgstr ""
+
+msgctxt "#30042"
+msgid "RetroPad > Right Analog > Left"
+msgstr ""
+
+msgctxt "#30043"
+msgid "RetroPad > Right Analog > Right"
+msgstr ""
+
+msgctxt "#30044"
+msgid "Video > Hardware acceleration"
 msgstr ""
