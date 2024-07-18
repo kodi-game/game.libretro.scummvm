@@ -1,0 +1,27 @@
+From 5baa4261785b0a4ad62887775ddb6867a15a52a8 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Wed, 17 Jul 2024 18:10:03 -0700
+Subject: [PATCH 2/2] patch libmad libretro-dep
+
+---
+ backends/platform/libretro/dependencies.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/backends/platform/libretro/dependencies.mk b/backends/platform/libretro/dependencies.mk
+index de7da2f22b5..3435eda00c7 100644
+--- a/backends/platform/libretro/dependencies.mk
++++ b/backends/platform/libretro/dependencies.mk
+@@ -6,8 +6,8 @@
+ DEPS_SUBMODULES             := libretro-deps libretro-common
+ 
+ DEPS_FOLDER_libretro-deps   := libretro-deps
+-DEPS_URL_libretro-deps      := https://github.com/libretro/libretro-deps
+-DEPS_COMMIT_libretro-deps   := abf5246b016569759e7d1b0ea91bb98c2e34d160
++DEPS_URL_libretro-deps      := https://github.com/fuzzard/libretro-deps
++DEPS_COMMIT_libretro-deps   := 5d0727b3dba4d9da6474a35d7283ba49def32d85
+ 
+ DEPS_FOLDER_libretro-common := libretro-common
+ DEPS_URL_libretro-common    := https://github.com/libretro/libretro-common
+-- 
+2.34.1
+
