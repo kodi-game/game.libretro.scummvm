@@ -1,83 +1,144 @@
-From f947abe8f6c2ecc8d29a2c7b971bedb4fc6f4c70 Mon Sep 17 00:00:00 2001
+From b650c8f092ae94817f45ba5568336af20e784d2a Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
 Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
 
 ---
- backends/platform/libretro/Makefile        | 56 +++++++++++++++++++++-
- backends/platform/libretro/dependencies.mk | 50 ++++++++++++-------
- 2 files changed, 86 insertions(+), 20 deletions(-)
+ backends/platform/libretro/Makefile        | 118 ++++++++++++++++++++-
+ backends/platform/libretro/dependencies.mk |  36 +++----
+ 2 files changed, 133 insertions(+), 21 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..da63d427abd 100644
+index bb3b8ca94f9..a484d29e3cb 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
-@@ -607,9 +607,61 @@ $(TARGET): $(DETECT_OBJS) $(OBJS) libdeps.a
+@@ -607,9 +607,121 @@ $(TARGET): $(DETECT_OBJS) $(OBJS) libdeps.a
  	$(HIDE)$(LD) $(LDFLAGS) $+ $(LIBS) $(LINKOUT)$@
  endif
  
 -libdeps.a: $(OBJS_DEPS)
-+libdeps_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
- 	@echo Linking $@...
+-	@echo Linking $@...
 -	$(HIDE)$(AR) $@ $^
-+	$(HIDE)$(AR) rcs $@ $^
++######################################################################
++# Dependencies
++######################################################################
 +
++OBJS_DEPS = $(OBJS_DEPS_LIBRETRO_COMMON)
++
++ifeq ($(USE_FLUIDSYNTH), 1)
++OBJS_DEPS += $(OBJS_DEPS_FLUIDSYNTH)
 +libdeps_fluidsynth.a: $(OBJS_DEPS_FLUIDSYNTH)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_fluidsynth.a
++endif
 +
++ifeq ($(USE_FLAC), 1)
++OBJS_DEPS += $(OBJS_DEPS_LIBFLAC)
 +libdeps_libflac.a: $(OBJS_DEPS_LIBFLAC)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_libflac.a
++endif
 +
++ifeq ($(USE_VORBIS), 1)
++OBJS_DEPS += $(OBJS_DEPS_LIBVORBIS)
 +libdeps_libvorbis.a: $(OBJS_DEPS_LIBVORBIS)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_libvorbis.a
++endif
 +
++ifeq ($(USE_TREMOR), 1)
++OBJS_DEPS += $(OBJS_DEPS_TREMOR)
 +libdeps_tremor.a: $(OBJS_DEPS_TREMOR)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_tremor.a
++endif
 +
++ifeq ($(USE_ZLIB), 1)
++OBJS_DEPS += $(OBJS_DEPS_LIBZ)
 +libdeps_libz.a: $(OBJS_DEPS_LIBZ)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_libz.a
++endif
 +
++ifeq ($(USE_MAD), 1)
++OBJS_DEPS += $(OBJS_DEPS_LIBMAD)
 +libdeps_libmad.a: $(OBJS_DEPS_LIBMAD)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_libmad.a
++endif
 +
++ifeq ($(USE_FAAD), 1)
++OBJS_DEPS += $(OBJS_DEPS_FAAD)
 +libdeps_faad.a: $(OBJS_DEPS_FAAD)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_faad.a
++endif
 +
++ifeq ($(USE_PNG), 1)
++OBJS_DEPS += $(OBJS_DEPS_PNG)
 +libdeps_png.a: $(OBJS_DEPS_PNG)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_png.a
++endif
 +
++ifeq ($(USE_JPEG), 1)
++OBJS_DEPS += $(OBJS_DEPS_JPEG)
 +libdeps_jpeg.a: $(OBJS_DEPS_JPEG)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_jpeg.a
++endif
 +
++ifeq ($(USE_THEORADEC), 1)
++OBJS_DEPS += $(OBJS_DEPS_THEORA)
 +libdeps_theora.a: $(OBJS_DEPS_THEORA)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_theora.a
++endif
 +
++ifeq ($(USE_FREETYPE2), 1)
++OBJS_DEPS += $(OBJS_DEPS_FREETYPE)
 +libdeps_freetype.a: $(OBJS_DEPS_FREETYPE)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_freetype.a
++endif
 +
++ifeq ($(USE_FRIBIDI), 1)
++OBJS_DEPS += $(OBJS_DEPS_FRIBIDI)
 +libdeps_fribidi.a: $(OBJS_DEPS_FRIBIDI)
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++LIBDEPS_SUBARCHIVES += libdeps_fribidi.a
++endif
 +
-+libdeps.a: libdeps_common.a libdeps_fluidsynth.a libdeps_libflac.a libdeps_libvorbis.a libdeps_tremor.a libdeps_libz.a libdeps_libmad.a libdeps_faad.a libdeps_png.a libdeps_jpeg.a libdeps_theora.a libdeps_freetype.a libdeps_fribidi.a
-+	@echo Linking $@...
-+	$(HIDE)$(AR) rcs $@ $^
++libdeps_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++
++LIBDEPS_SUBARCHIVES += libdeps_common.a
++
++libdeps.a: $(LIBDEPS_SUBARCHIVES)
++   @echo Linking $@...
++   $(HIDE)$(AR) rcs $@ $^
++
++######################################################################
++# End of dependencies
++######################################################################
  
  libdetect.a: $(DETECT_OBJS)
  	@echo Linking $@...
 diff --git a/backends/platform/libretro/dependencies.mk b/backends/platform/libretro/dependencies.mk
-index 3435eda00c7..e1e45033dee 100644
+index 3435eda00c7..039bb78e690 100644
 --- a/backends/platform/libretro/dependencies.mk
 +++ b/backends/platform/libretro/dependencies.mk
 @@ -37,7 +37,7 @@ sharedlibs_system_lib_message = $(info - Use system shared $(shell printf ' $(th
@@ -227,24 +288,6 @@ index 3435eda00c7..e1e45033dee 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-bidi-types.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-bidi.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-brackets.o \
-@@ -603,3 +603,17 @@ else
- $(info System libcurl not available, dropping cloud feature.)
- endif
- endif
-+
-+OBJS_DEPS = $(OBJS_DEPS_LIBRETRO_COMMON) \
-+	$(OBJS_DEPS_FLUIDSYNTH) \
-+	$(OBJS_DEPS_LIBFLAC) \
-+	$(OBJS_DEPS_LIBVORBIS) \
-+	$(OBJS_DEPS_TREMOR) \
-+	$(OBJS_DEPS_LIBZ) \
-+	$(OBJS_DEPS_LIBMAD) \
-+	$(OBJS_DEPS_FAAD) \
-+	$(OBJS_DEPS_PNG) \
-+	$(OBJS_DEPS_JPEG) \
-+	$(OBJS_DEPS_THEORA) \
-+	$(OBJS_DEPS_FREETYPE) \
-+	$(OBJS_DEPS_FRIBIDI)
 -- 
 2.34.1
 
