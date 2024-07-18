@@ -1,7 +1,7 @@
 From 5baa4261785b0a4ad62887775ddb6867a15a52a8 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Wed, 17 Jul 2024 18:10:03 -0700
-Subject: [PATCH 2/2] patch libmad libretro-dep
+Subject: [PATCH 2/3] patch libmad libretro-dep
 
 ---
  backends/platform/libretro/dependencies.mk | 4 ++--
