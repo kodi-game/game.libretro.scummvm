@@ -33,6 +33,7 @@ if(CORE_SYSTEM_NAME STREQUAL windows)
                     )
 elseif(CORE_SYSTEM_NAME STREQUAL linux)
   set(BUILD_COMMAND $(MAKE)
+                    -j
                     -C backends/platform/libretro
                     -f Makefile
                     ${LIBRETRO_DEBUG}
@@ -46,6 +47,7 @@ elseif(CORE_SYSTEM_NAME STREQUAL osx)
     set(ARCH intel)
   endif()
   set(BUILD_COMMAND $(MAKE)
+                    -j
                     -C backends/platform/libretro
                     -f Makefile
                     ${LIBRETRO_DEBUG}
@@ -65,6 +67,7 @@ elseif(CORE_SYSTEM_NAME STREQUAL ios OR CORE_SYSTEM_NAME STREQUAL darwin_embedde
       set(PLATFORM ios)
     endif()
     set(BUILD_COMMAND IOSSDK=${CMAKE_OSX_SYSROOT} $(MAKE)
+                                                  -j
                                                   -C backends/platform/libretro
                                                   -f Makefile
                                                   ${LIBRETRO_DEBUG}
@@ -74,6 +77,7 @@ elseif(CORE_SYSTEM_NAME STREQUAL ios OR CORE_SYSTEM_NAME STREQUAL darwin_embedde
   elseif(CORE_PLATFORM_NAME STREQUAL tvos)
     set(LIBRETRO_SONAME scummvm_libretro_tvos${CMAKE_SHARED_LIBRARY_SUFFIX})
     set(BUILD_COMMAND IOSSDK=${CMAKE_OSX_SYSROOT} $(MAKE)
+                                                  -j
                                                   -C backends/platform/libretro
                                                   -f Makefile
                                                   ${LIBRETRO_DEBUG}
@@ -93,6 +97,7 @@ elseif(CORE_SYSTEM_NAME STREQUAL android)
     message(FATAL_ERROR "${PROJECT_NAME} needs Android ${CPU} build command in CMakeLists.txt!")
   endif()
   set(BUILD_COMMAND GNUMAKE=$(MAKE) ${NDKROOT}/ndk-build
+                                    -j
                                     -C backends/platform/libretro/jni
                                     ${LIBRETRO_DEBUG}
                                     APP_ABI=${PLATFORM}
@@ -107,6 +112,7 @@ elseif(CORE_SYSTEM_NAME STREQUAL rbpi)
   message(FATAL_ERROR "${PROJECT_NAME} needs RPi build command in CMakeLists.txt!")
 elseif(CORE_SYSTEM_NAME STREQUAL freebsd)
   set(BUILD_COMMAND $(MAKE)
+                    -j
                     -C backends/platform/libretro
                     -f Makefile
                     ${LIBRETRO_DEBUG
