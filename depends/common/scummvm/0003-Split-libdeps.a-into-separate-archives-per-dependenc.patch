@@ -1,42 +1,27 @@
-From 082538c82558ba0003f4af01b20940bcf86429ab Mon Sep 17 00:00:00 2001
+From 76c6ee9c2218c3566f0840c39c81504666421018 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
 Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
 
 ---
- backends/platform/libretro/Makefile        | 119 ++++++++++++++++++++-
- backends/platform/libretro/dependencies.mk |  50 +++++----
- 2 files changed, 147 insertions(+), 22 deletions(-)
+ backends/platform/libretro/Makefile        | 124 +++++++++++++++++++--
+ backends/platform/libretro/dependencies.mk |  50 ++++++---
+ 2 files changed, 147 insertions(+), 27 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..b8b1c092df6 100644
+index bb3b8ca94f9..13b2225f625 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
-@@ -596,20 +596,131 @@ $(TARGET): libnx-ln $(OBJS) libdeps.a libdetect.a
- 	cp $+ libtemp/
- 	$(AR) -M < $(ROOT_PATH)/script.mri
- else ifeq ($(STATIC_LINKING), 1)
--$(TARGET): $(OBJS) libdeps.a libdetect.a
-+$(TARGET): libdeps.a $(OBJS) libdetect.a # TODO
- 	$(MKDIR) libtemp
- 	$(CP) $+ libtemp/
- 	@echo Linking $@...
- 	$(AR) -M < $(ROOT_PATH)/script.mri
- else
--$(TARGET): $(DETECT_OBJS) $(OBJS) libdeps.a
-+$(TARGET): libdeps.a $(DETECT_OBJS) $(OBJS) # TODO
- 	@echo Linking $@...
- 	$(HIDE)$(LD) $(LDFLAGS) $+ $(LIBS) $(LINKOUT)$@
+@@ -585,32 +585,138 @@ else
+ endif
  endif
  
--libdeps.a: $(OBJS_DEPS)
 +######################################################################
 +# Dependencies
 +######################################################################
 +
 +libdeps_libretro_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
- 	@echo Linking $@...
--	$(HIDE)$(AR) $@ $^
++	@echo Linking $@...
 +	$(AR) $@ $^
 +	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES = libdeps_libretro_common.a
@@ -137,17 +122,52 @@ index bb3b8ca94f9..b8b1c092df6 100644
 +LIBDEPS_SUBARCHIVES += libdeps_fribidi.a
 +endif
 +
-+libdeps.a: $(LIBDEPS_SUBARCHIVES)
-+	@echo Linking $@...
-+	$(AR) $@ $^
-+	$(RANLIB) $@
-+
 +######################################################################
 +# End of dependencies
 +######################################################################
++
+ ifneq (,$(filter $(platform), wiiu emscripten))
+-$(TARGET): $(OBJS) libdeps.a libdetect.a
++$(TARGET): $(OBJS) $(LIBDEPS_SUBARCHIVES) libdetect.a
+ 	$(MKDIR) libtemp
+ 	$(CP) $+ libtemp/
+ 	$(AR_ALONE) -M < $(ROOT_PATH)/script.mri
+ else ifeq ($(platform), libnx)
+-$(TARGET): libnx-ln $(OBJS) libdeps.a libdetect.a
++$(TARGET): libnx-ln $(OBJS) $(LIBDEPS_SUBARCHIVES) libdetect.a
+ 	$(MKDIR) libtemp
+ 	cp $+ libtemp/
+ 	$(AR) -M < $(ROOT_PATH)/script.mri
+ else ifeq ($(STATIC_LINKING), 1)
+-$(TARGET): $(OBJS) libdeps.a libdetect.a
++$(TARGET): $(OBJS) $(LIBDEPS_SUBARCHIVES) libdetect.a
+ 	$(MKDIR) libtemp
+ 	$(CP) $+ libtemp/
+ 	@echo Linking $@...
+ 	$(AR) -M < $(ROOT_PATH)/script.mri
+ else
+-$(TARGET): $(DETECT_OBJS) $(OBJS) libdeps.a
++$(TARGET): $(DETECT_OBJS) $(OBJS) $(LIBDEPS_SUBARCHIVES)
+ 	@echo Linking $@...
+ 	$(HIDE)$(LD) $(LDFLAGS) $+ $(LIBS) $(LINKOUT)$@
+ endif
  
+-libdeps.a: $(OBJS_DEPS)
+-	@echo Linking $@...
+-	$(HIDE)$(AR) $@ $^
+-
  libdetect.a: $(DETECT_OBJS)
  	@echo Linking $@...
+ 	$(HIDE)$(AR) $@ $^
+@@ -635,7 +741,7 @@ libdetect.a: $(DETECT_OBJS)
+ clean:
+ 	@echo Cleaning project...
+ 	$(HIDE)$(RM_REC) $(DEPDIRS) $(DEPS_PATH)
+-	$(HIDE)$(RM) $(OBJS) $(DETECT_OBJS) $(OBJS_DEPS) libdeps.a libdetect.a $(TARGET) *.a
++	$(HIDE)$(RM) $(OBJS) $(DETECT_OBJS) $(OBJS_DEPS) $(LIBDEPS_SUBARCHIVES) libdetect.a $(TARGET) *.a
+ 	$(HIDE)$(RM_REC) libtemp $(MODULES)
+ 	$(HIDE)$(RM) libnx-ln
+ 	$(HIDE)$(RM) scummvm.zip  $(TARGET_NAME)_libretro.* script.mri config.mk.engines.lite ScummVM.dat
 diff --git a/backends/platform/libretro/dependencies.mk b/backends/platform/libretro/dependencies.mk
 index 3435eda00c7..ba73a63f51f 100644
 --- a/backends/platform/libretro/dependencies.mk
