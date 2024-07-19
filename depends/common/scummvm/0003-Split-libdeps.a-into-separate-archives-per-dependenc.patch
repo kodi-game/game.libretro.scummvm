@@ -1,18 +1,18 @@
-From 091e00aacb8a37691ce79ee0b093329dd0271090 Mon Sep 17 00:00:00 2001
+From f0eda4797eeb14c32c80f4a3a7462317ab99ac1e Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
 Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
 
 ---
- backends/platform/libretro/Makefile        | 118 ++++++++++++++++++++-
- backends/platform/libretro/dependencies.mk |  36 +++----
- 2 files changed, 132 insertions(+), 22 deletions(-)
+ backends/platform/libretro/Makefile        | 105 ++++++++++++++++++++-
+ backends/platform/libretro/dependencies.mk |  50 ++++++----
+ 2 files changed, 133 insertions(+), 22 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..8fa12d4f452 100644
+index bb3b8ca94f9..379672b8a89 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
-@@ -596,20 +596,130 @@ $(TARGET): libnx-ln $(OBJS) libdeps.a libdetect.a
+@@ -596,20 +596,117 @@ $(TARGET): libnx-ln $(OBJS) libdeps.a libdetect.a
  	cp $+ libtemp/
  	$(AR) -M < $(ROOT_PATH)/script.mri
  else ifeq ($(STATIC_LINKING), 1)
@@ -34,14 +34,12 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +# Dependencies
 +######################################################################
 +
-+OBJS_DEPS = $(OBJS_DEPS_LIBRETRO_COMMON)
 +libdeps_libretro_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
  	@echo Linking $@...
 -	$(HIDE)$(AR) $@ $^
 +	$(AR) $@ $^
 +LIBDEPS_SUBARCHIVES = libdeps_libretro_common.a
 +
-+ifeq ($(USE_FLUIDSYNTH), 1)
 +OBJS_DEPS += $(OBJS_DEPS_FLUIDSYNTH)
 +libdeps_fluidsynth.a: $(OBJS_DEPS_FLUIDSYNTH)
 +	@echo Linking $@...
@@ -50,7 +48,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_FLAC), 1)
-+OBJS_DEPS += $(OBJS_DEPS_LIBFLAC)
 +libdeps_libflac.a: $(OBJS_DEPS_LIBFLAC)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -58,7 +55,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_VORBIS), 1)
-+OBJS_DEPS += $(OBJS_DEPS_LIBVORBIS)
 +libdeps_libvorbis.a: $(OBJS_DEPS_LIBVORBIS)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -66,7 +62,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_TREMOR), 1)
-+OBJS_DEPS += $(OBJS_DEPS_TREMOR)
 +libdeps_tremor.a: $(OBJS_DEPS_TREMOR)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -74,7 +69,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_ZLIB), 1)
-+OBJS_DEPS += $(OBJS_DEPS_LIBZ)
 +libdeps_libz.a: $(OBJS_DEPS_LIBZ)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -82,7 +76,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_MAD), 1)
-+OBJS_DEPS += $(OBJS_DEPS_LIBMAD)
 +libdeps_libmad.a: $(OBJS_DEPS_LIBMAD)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -90,7 +83,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_FAAD), 1)
-+OBJS_DEPS += $(OBJS_DEPS_FAAD)
 +libdeps_faad.a: $(OBJS_DEPS_FAAD)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -98,7 +90,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_PNG), 1)
-+OBJS_DEPS += $(OBJS_DEPS_PNG)
 +libdeps_png.a: $(OBJS_DEPS_PNG)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -106,7 +97,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_JPEG), 1)
-+OBJS_DEPS += $(OBJS_DEPS_JPEG)
 +libdeps_jpeg.a: $(OBJS_DEPS_JPEG)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -114,7 +104,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_THEORADEC), 1)
-+OBJS_DEPS += $(OBJS_DEPS_THEORA)
 +libdeps_theora.a: $(OBJS_DEPS_THEORA)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -122,7 +111,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_FREETYPE2), 1)
-+OBJS_DEPS += $(OBJS_DEPS_FREETYPE)
 +libdeps_freetype.a: $(OBJS_DEPS_FREETYPE)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -130,7 +118,6 @@ index bb3b8ca94f9..8fa12d4f452 100644
 +endif
 +
 +ifeq ($(USE_FRIBIDI), 1)
-+OBJS_DEPS += $(OBJS_DEPS_FRIBIDI)
 +libdeps_fribidi.a: $(OBJS_DEPS_FRIBIDI)
 +	@echo Linking $@...
 +	$(AR) $@ $^
@@ -148,7 +135,7 @@ index bb3b8ca94f9..8fa12d4f452 100644
  libdetect.a: $(DETECT_OBJS)
  	@echo Linking $@...
 diff --git a/backends/platform/libretro/dependencies.mk b/backends/platform/libretro/dependencies.mk
-index 3435eda00c7..039bb78e690 100644
+index 3435eda00c7..ba73a63f51f 100644
 --- a/backends/platform/libretro/dependencies.mk
 +++ b/backends/platform/libretro/dependencies.mk
 @@ -37,7 +37,7 @@ sharedlibs_system_lib_message = $(info - Use system shared $(shell printf ' $(th
@@ -160,7 +147,7 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/file/file_path.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/file/retro_dirent.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/vfs/vfs_implementation.o \
-@@ -48,16 +48,16 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/file/file_path_io.o \
+@@ -48,20 +48,22 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/file/file_path_io.o \
  
  
  ifeq ($(USE_LIBCO), 1)
@@ -181,7 +168,13 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/compat/fopen_utf8.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-common)/compat/compat_strl.o
  endif
-@@ -78,7 +78,7 @@ INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/include \
+ 
++OBJS_DEPS = $(OBJS_DEPS_LIBRETRO_COMMON)
++
+ ######################################################################
+ # fluidsynth\fluidlite settings
+ ######################################################################
+@@ -78,7 +80,7 @@ INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/include \
  	-I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src \
  	-I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/include \
  	-I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libogg/include
@@ -190,7 +183,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_chorus.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_conv.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_defsfont.o \
-@@ -110,7 +110,7 @@ this_lib_flags := -lFLAC
+@@ -95,6 +97,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_chan.
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_tuning.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_voice.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fluidlite/src/fluid_init.o
++OBJS_DEPS += $(OBJS_DEPS_FLUIDSYNTH)
+ endif
+ endif
+ 
+@@ -110,7 +113,7 @@ this_lib_flags := -lFLAC
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/include
@@ -199,7 +200,7 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/cpu.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/crc.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/fixed.o \
-@@ -122,7 +122,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/bitreader.o \
+@@ -122,9 +125,10 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/bitreader.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/stream_decoder.o
  
  ifeq ($(platform), win)
@@ -207,8 +208,11 @@ index 3435eda00c7..039bb78e690 100644
 +OBJS_DEPS_LIBFLAC += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libFLAC/share/win_utf8_io/win_utf8_io.o \
  	 $(SCUMMVM_PATH)/backends/platform/sdl/win32/win32_wrapper.o
  endif
++OBJS_DEPS += $(OBJS_DEPS_LIBFLAC)
  endif
-@@ -142,7 +142,7 @@ ifneq ($(this_lib_available), yes)
+ endif
+ 
+@@ -142,7 +146,7 @@ ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libogg/include \
  	-I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/include \
  	-I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/lib
@@ -217,7 +221,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libogg/src/framing.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/lib/analysis.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/lib/bitrate.o \
-@@ -181,7 +181,7 @@ this_lib_flags := -ltremor
+@@ -166,6 +170,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libogg/src/bitwise.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/lib/vorbisenc.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/lib/vorbisfile.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libvorbis/lib/window.o
++OBJS_DEPS += $(OBJS_DEPS_LIBVORBIS)
+ endif
+ endif
+ 
+@@ -181,7 +186,7 @@ this_lib_flags := -ltremor
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES  += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)
@@ -226,7 +238,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/block.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/codebook.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/floor0.o \
-@@ -210,7 +210,7 @@ this_lib_header := zlib.h
+@@ -196,6 +201,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/bitwise.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/synthesis.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/vorbisfile.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/tremor/window.o
++OBJS_DEPS += $(OBJS_DEPS_TREMOR)
+ endif
+ endif
+ 
+@@ -210,7 +216,7 @@ this_lib_header := zlib.h
  this_lib_flags := -lz
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
@@ -235,7 +255,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/gzlib.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/uncompr.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/zutil.o \
-@@ -240,7 +240,7 @@ this_lib_flags := -lmad
+@@ -225,6 +231,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/deflate.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/gzclose.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/compress.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libz/adler32.o
++OBJS_DEPS += $(OBJS_DEPS_LIBZ)
+ endif
+ endif
+ 
+@@ -240,7 +247,7 @@ this_lib_flags := -lmad
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad
@@ -244,7 +272,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/decoder.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/frame.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/huffman.o \
-@@ -264,7 +264,7 @@ this_lib_flags := -lfaad
+@@ -249,6 +256,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/bit.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/stream.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/synth.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libmad/timer.o
++OBJS_DEPS += $(OBJS_DEPS_LIBMAD)
+ endif
+ endif
+ 
+@@ -264,7 +272,7 @@ this_lib_flags := -lfaad
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/include -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad
@@ -253,7 +289,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/cfft.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/common.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/decoder.o \
-@@ -313,7 +313,7 @@ this_lib_flags := -lpng
+@@ -298,6 +306,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/bits.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/specrec.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/syntax.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libfaad/libfaad/tns.o
++OBJS_DEPS += $(OBJS_DEPS_FAAD)
+ endif
+ endif
+ 
+@@ -313,7 +322,7 @@ this_lib_flags := -lpng
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng
@@ -262,7 +306,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/pngerror.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/pngget.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/pngmem.o \
-@@ -343,7 +343,7 @@ this_lib_flags := -ljpeg
+@@ -328,6 +337,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/png.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/pngwutil.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/pngwtran.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libpng/pngwio.o
++OBJS_DEPS += $(OBJS_DEPS_PNG)
+ endif
+ endif
+ 
+@@ -343,7 +353,7 @@ this_lib_flags := -ljpeg
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg
@@ -271,7 +323,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jcapimin.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jcapistd.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jcarith.o \
-@@ -404,7 +404,7 @@ this_lib_flags := -ltheora
+@@ -389,6 +399,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jaricom.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jquant2.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jutils.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/libjpeg/jsimd_none.o
++OBJS_DEPS += $(OBJS_DEPS_JPEG)
+ endif
+ endif
+ 
+@@ -404,7 +415,7 @@ this_lib_flags := -ltheora
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/include
@@ -280,7 +340,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/decinfo.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/decode.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/dequant.o \
-@@ -435,7 +435,7 @@ include $(ROOT_PATH)/sharedlib_test.mk
+@@ -415,6 +426,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/bitpack.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/internal.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/quant.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/theora/lib/state.o
++OBJS_DEPS += $(OBJS_DEPS_THEORA)
+ endif
+ else
+ #undefine as in ScummVM macro definition is tested to enable theora
+@@ -435,7 +447,7 @@ include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  DEFINES += -DFT2_BUILD_LIBRARY
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/include
@@ -289,7 +357,15 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/autofit/afblue.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/autofit/afcjk.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/autofit/afdummy.o \
-@@ -559,7 +559,7 @@ this_lib_flags := -lfribidi
+@@ -544,6 +556,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/autofit/afan
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/truetype/ttobjs.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/truetype/ttpload.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/freetype/src/winfonts/winfnt.o
++OBJS_DEPS += $(OBJS_DEPS_FREETYPE)
+ endif
+ endif
+ 
+@@ -559,7 +572,7 @@ this_lib_flags := -lfribidi
  include $(ROOT_PATH)/sharedlib_test.mk
  ifneq ($(this_lib_available), yes)
  INCLUDES += -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps) -I$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi
@@ -298,6 +374,14 @@ index 3435eda00c7..039bb78e690 100644
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-bidi-types.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-bidi.o \
  	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-brackets.o \
+@@ -577,6 +590,7 @@ OBJS_DEPS += $(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-arabic.o
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-run.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi-shape.o \
+ 	$(DEPS_PATH)/$(DEPS_FOLDER_libretro-deps)/fribidi/fribidi.o
++OBJS_DEPS += $(OBJS_DEPS_FRIBIDI)
+ endif
+ endif
+ 
 -- 
 2.34.1
 
