@@ -1,18 +1,18 @@
-From 76c6ee9c2218c3566f0840c39c81504666421018 Mon Sep 17 00:00:00 2001
+From 9bd8c11ad95aa326f6ef1a1dc0abaad172b058be Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
 Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
 
 ---
- backends/platform/libretro/Makefile        | 124 +++++++++++++++++++--
- backends/platform/libretro/dependencies.mk |  50 ++++++---
- 2 files changed, 147 insertions(+), 27 deletions(-)
+ backends/platform/libretro/Makefile        | 111 +++++++++++++++++++--
+ backends/platform/libretro/dependencies.mk |  50 ++++++----
+ 2 files changed, 134 insertions(+), 27 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..13b2225f625 100644
+index bb3b8ca94f9..121621240a2 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
-@@ -585,32 +585,138 @@ else
+@@ -585,32 +585,125 @@ else
  endif
  endif
  
@@ -23,14 +23,12 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_libretro_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES = libdeps_libretro_common.a
 +
 +ifeq ($(USE_FLUIDSYNTH), 1)
 +libdeps_fluidsynth.a: $(OBJS_DEPS_FLUIDSYNTH)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_fluidsynth.a
 +endif
 +
@@ -38,7 +36,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_libflac.a: $(OBJS_DEPS_LIBFLAC)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_libflac.a
 +endif
 +
@@ -46,7 +43,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_libvorbis.a: $(OBJS_DEPS_LIBVORBIS)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_libvorbis.a
 +endif
 +
@@ -54,7 +50,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_tremor.a: $(OBJS_DEPS_TREMOR)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_tremor.a
 +endif
 +
@@ -62,7 +57,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_libz.a: $(OBJS_DEPS_LIBZ)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_libz.a
 +endif
 +
@@ -70,7 +64,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_libmad.a: $(OBJS_DEPS_LIBMAD)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_libmad.a
 +endif
 +
@@ -78,7 +71,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_faad.a: $(OBJS_DEPS_FAAD)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_faad.a
 +endif
 +
@@ -86,7 +78,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_png.a: $(OBJS_DEPS_PNG)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_png.a
 +endif
 +
@@ -94,7 +85,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_jpeg.a: $(OBJS_DEPS_JPEG)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_jpeg.a
 +endif
 +
@@ -102,7 +92,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_theora.a: $(OBJS_DEPS_THEORA)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_theora.a
 +endif
 +
@@ -110,7 +99,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_freetype.a: $(OBJS_DEPS_FREETYPE)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_freetype.a
 +endif
 +
@@ -118,7 +106,6 @@ index bb3b8ca94f9..13b2225f625 100644
 +libdeps_fribidi.a: $(OBJS_DEPS_FRIBIDI)
 +	@echo Linking $@...
 +	$(AR) $@ $^
-+	$(RANLIB) $@
 +LIBDEPS_SUBARCHIVES += libdeps_fribidi.a
 +endif
 +
@@ -159,7 +146,7 @@ index bb3b8ca94f9..13b2225f625 100644
  libdetect.a: $(DETECT_OBJS)
  	@echo Linking $@...
  	$(HIDE)$(AR) $@ $^
-@@ -635,7 +741,7 @@ libdetect.a: $(DETECT_OBJS)
+@@ -635,7 +728,7 @@ libdetect.a: $(DETECT_OBJS)
  clean:
  	@echo Cleaning project...
  	$(HIDE)$(RM_REC) $(DEPDIRS) $(DEPS_PATH)
