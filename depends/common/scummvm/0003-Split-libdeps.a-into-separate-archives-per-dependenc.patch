@@ -1,4 +1,4 @@
-From e0fae993da69952a52d4f4beeac9af66807eb828 Mon Sep 17 00:00:00 2001
+From f378208c65d587e48e340d3474289dfd028b8d74 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
 Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
@@ -9,7 +9,7 @@ Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
  2 files changed, 130 insertions(+), 20 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..b9cb29104fc 100644
+index bb3b8ca94f9..d80cfb52c97 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
 @@ -607,9 +607,119 @@ $(TARGET): $(DETECT_OBJS) $(OBJS) libdeps.a
@@ -23,15 +23,15 @@ index bb3b8ca94f9..b9cb29104fc 100644
 +
 +OBJS_DEPS = $(OBJS_DEPS_LIBRETRO_COMMON)
 +libdeps_libretro_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
-+   @echo Linking $@...
-+   $(AR) $@ $^
+ 	@echo Linking $@...
+-	$(HIDE)$(AR) $@ $^
++	$(AR) $@ $^
 +LIBDEPS_SUBARCHIVES = libdeps_libretro_common.a
 +
 +ifeq ($(USE_FLUIDSYNTH), 1)
 +OBJS_DEPS += $(OBJS_DEPS_FLUIDSYNTH)
 +libdeps_fluidsynth.a: $(OBJS_DEPS_FLUIDSYNTH)
- 	@echo Linking $@...
--	$(HIDE)$(AR) $@ $^
++	@echo Linking $@...
 +	$(AR) $@ $^
 +LIBDEPS_SUBARCHIVES += libdeps_fluidsynth.a
 +endif
