@@ -1,4 +1,4 @@
-From f0eda4797eeb14c32c80f4a3a7462317ab99ac1e Mon Sep 17 00:00:00 2001
+From 7931d674b36d5c888e1a698364858add6b00d489 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
 Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
@@ -9,7 +9,7 @@ Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
  2 files changed, 133 insertions(+), 22 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..379672b8a89 100644
+index bb3b8ca94f9..ae765e2b113 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
 @@ -596,20 +596,117 @@ $(TARGET): libnx-ln $(OBJS) libdeps.a libdetect.a
@@ -40,7 +40,7 @@ index bb3b8ca94f9..379672b8a89 100644
 +	$(AR) $@ $^
 +LIBDEPS_SUBARCHIVES = libdeps_libretro_common.a
 +
-+OBJS_DEPS += $(OBJS_DEPS_FLUIDSYNTH)
++ifeq ($(USE_FLUIDSYNTH), 1)
 +libdeps_fluidsynth.a: $(OBJS_DEPS_FLUIDSYNTH)
 +	@echo Linking $@...
 +	$(AR) $@ $^
