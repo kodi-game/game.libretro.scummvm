@@ -1,7 +1,8 @@
-From 9bd8c11ad95aa326f6ef1a1dc0abaad172b058be Mon Sep 17 00:00:00 2001
+From db732cbc20d81e85de1c50972f8d59e2c805f1c0 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Thu, 18 Jul 2024 13:21:31 -0700
-Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
+Subject: [PATCH 1/3] LIBRETRO: Split libdeps.a into separate archives per
+ dependency
 
 ---
  backends/platform/libretro/Makefile        | 111 +++++++++++++++++++--
@@ -9,10 +10,10 @@ Subject: [PATCH 3/3] Split libdeps.a into separate archives per dependency
  2 files changed, 134 insertions(+), 27 deletions(-)
 
 diff --git a/backends/platform/libretro/Makefile b/backends/platform/libretro/Makefile
-index bb3b8ca94f9..121621240a2 100644
+index 638d77cbc3a..d20618838df 100644
 --- a/backends/platform/libretro/Makefile
 +++ b/backends/platform/libretro/Makefile
-@@ -585,32 +585,125 @@ else
+@@ -586,32 +586,125 @@ else
  endif
  endif
  
@@ -22,119 +23,119 @@ index bb3b8ca94f9..121621240a2 100644
 +
 +libdeps_libretro_common.a: $(OBJS_DEPS_LIBRETRO_COMMON)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES = libdeps_libretro_common.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES = libdeps_libretro_common.a
 +
 +ifeq ($(USE_FLUIDSYNTH), 1)
 +libdeps_fluidsynth.a: $(OBJS_DEPS_FLUIDSYNTH)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_fluidsynth.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_fluidsynth.a
 +endif
 +
 +ifeq ($(USE_FLAC), 1)
 +libdeps_libflac.a: $(OBJS_DEPS_LIBFLAC)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_libflac.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_libflac.a
 +endif
 +
 +ifeq ($(USE_VORBIS), 1)
 +libdeps_libvorbis.a: $(OBJS_DEPS_LIBVORBIS)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_libvorbis.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_libvorbis.a
 +endif
 +
 +ifeq ($(USE_TREMOR), 1)
 +libdeps_tremor.a: $(OBJS_DEPS_TREMOR)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_tremor.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_tremor.a
 +endif
 +
 +ifeq ($(USE_ZLIB), 1)
 +libdeps_libz.a: $(OBJS_DEPS_LIBZ)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_libz.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_libz.a
 +endif
 +
 +ifeq ($(USE_MAD), 1)
 +libdeps_libmad.a: $(OBJS_DEPS_LIBMAD)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_libmad.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_libmad.a
 +endif
 +
 +ifeq ($(USE_FAAD), 1)
 +libdeps_faad.a: $(OBJS_DEPS_FAAD)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_faad.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_faad.a
 +endif
 +
 +ifeq ($(USE_PNG), 1)
 +libdeps_png.a: $(OBJS_DEPS_PNG)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_png.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_png.a
 +endif
 +
 +ifeq ($(USE_JPEG), 1)
 +libdeps_jpeg.a: $(OBJS_DEPS_JPEG)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_jpeg.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_jpeg.a
 +endif
 +
 +ifeq ($(USE_THEORADEC), 1)
 +libdeps_theora.a: $(OBJS_DEPS_THEORA)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_theora.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_theora.a
 +endif
 +
 +ifeq ($(USE_FREETYPE2), 1)
 +libdeps_freetype.a: $(OBJS_DEPS_FREETYPE)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_freetype.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_freetype.a
 +endif
 +
 +ifeq ($(USE_FRIBIDI), 1)
 +libdeps_fribidi.a: $(OBJS_DEPS_FRIBIDI)
 +	@echo Linking $@...
-+	$(AR) $@ $^
-+LIBDEPS_SUBARCHIVES += libdeps_fribidi.a
++	$(HIDE)$(AR) $@ $^
++LIBDEPS_ARCHIVES += libdeps_fribidi.a
 +endif
 +
 +######################################################################
-+# End of dependencies
++# Platform libraries
 +######################################################################
 +
  ifneq (,$(filter $(platform), wiiu emscripten))
 -$(TARGET): $(OBJS) libdeps.a libdetect.a
-+$(TARGET): $(OBJS) $(LIBDEPS_SUBARCHIVES) libdetect.a
++$(TARGET): $(OBJS) $(LIBDEPS_ARCHIVES) libdetect.a
  	$(MKDIR) libtemp
  	$(CP) $+ libtemp/
  	$(AR_ALONE) -M < $(ROOT_PATH)/script.mri
  else ifeq ($(platform), libnx)
 -$(TARGET): libnx-ln $(OBJS) libdeps.a libdetect.a
-+$(TARGET): libnx-ln $(OBJS) $(LIBDEPS_SUBARCHIVES) libdetect.a
++$(TARGET): libnx-ln $(OBJS) $(LIBDEPS_ARCHIVES) libdetect.a
  	$(MKDIR) libtemp
  	cp $+ libtemp/
  	$(AR) -M < $(ROOT_PATH)/script.mri
  else ifeq ($(STATIC_LINKING), 1)
 -$(TARGET): $(OBJS) libdeps.a libdetect.a
-+$(TARGET): $(OBJS) $(LIBDEPS_SUBARCHIVES) libdetect.a
++$(TARGET): $(OBJS) $(LIBDEPS_ARCHIVES) libdetect.a
  	$(MKDIR) libtemp
  	$(CP) $+ libtemp/
  	@echo Linking $@...
  	$(AR) -M < $(ROOT_PATH)/script.mri
  else
 -$(TARGET): $(DETECT_OBJS) $(OBJS) libdeps.a
-+$(TARGET): $(DETECT_OBJS) $(OBJS) $(LIBDEPS_SUBARCHIVES)
++$(TARGET): $(DETECT_OBJS) $(OBJS) $(LIBDEPS_ARCHIVES)
  	@echo Linking $@...
  	$(HIDE)$(LD) $(LDFLAGS) $+ $(LIBS) $(LINKOUT)$@
  endif
@@ -146,17 +147,17 @@ index bb3b8ca94f9..121621240a2 100644
  libdetect.a: $(DETECT_OBJS)
  	@echo Linking $@...
  	$(HIDE)$(AR) $@ $^
-@@ -635,7 +728,7 @@ libdetect.a: $(DETECT_OBJS)
+@@ -636,7 +729,7 @@ libdetect.a: $(DETECT_OBJS)
  clean:
  	@echo Cleaning project...
  	$(HIDE)$(RM_REC) $(DEPDIRS) $(DEPS_PATH)
 -	$(HIDE)$(RM) $(OBJS) $(DETECT_OBJS) $(OBJS_DEPS) libdeps.a libdetect.a $(TARGET) *.a
-+	$(HIDE)$(RM) $(OBJS) $(DETECT_OBJS) $(OBJS_DEPS) $(LIBDEPS_SUBARCHIVES) libdetect.a $(TARGET) *.a
++	$(HIDE)$(RM) $(OBJS) $(DETECT_OBJS) $(OBJS_DEPS) $(LIBDEPS_ARCHIVES) libdetect.a $(TARGET) *.a
  	$(HIDE)$(RM_REC) libtemp $(MODULES)
  	$(HIDE)$(RM) libnx-ln
  	$(HIDE)$(RM) scummvm.zip  $(TARGET_NAME)_libretro.* script.mri config.mk.engines.lite ScummVM.dat
 diff --git a/backends/platform/libretro/dependencies.mk b/backends/platform/libretro/dependencies.mk
-index 3435eda00c7..ba73a63f51f 100644
+index 79e2067b9a3..431d477c95c 100644
 --- a/backends/platform/libretro/dependencies.mk
 +++ b/backends/platform/libretro/dependencies.mk
 @@ -37,7 +37,7 @@ sharedlibs_system_lib_message = $(info - Use system shared $(shell printf ' $(th
