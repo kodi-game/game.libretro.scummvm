@@ -25,10 +25,6 @@ msgctxt "Addon Description"
 msgid "ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games."
 msgstr "ScummVM ist eine Sammlung von Spiel-Engine-Nachbildungen. ScummVM emuliert mehrere Systeme, darunter das SCUMM-System für Adventure-Games von LucasArts."
 
-msgctxt "#30000"
-msgid "Settings"
-msgstr "Einstellungen"
-
 msgctxt "#30007"
 msgid "Cursor > Exclusive cursor control with RetroPad"
 msgstr ""
@@ -180,6 +176,10 @@ msgstr ""
 msgctxt "#30044"
 msgid "Video > Hardware acceleration"
 msgstr ""
+
+#~ msgctxt "#30000"
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
 
 #~ msgctxt "#30001"
 #~ msgid "Gamepad Cursor Speed"
