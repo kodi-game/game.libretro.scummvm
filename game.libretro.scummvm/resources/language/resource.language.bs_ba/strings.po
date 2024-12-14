@@ -52,22 +52,6 @@ msgctxt "#30013"
 msgid "Cursor > Mouse Fine Control Speed Reduction"
 msgstr ""
 
-msgctxt "#30014"
-msgid "Frameskip > Frameskip Mode"
-msgstr ""
-
-msgctxt "#30015"
-msgid "Frameskip > Frameskip Threshold (%)"
-msgstr ""
-
-msgctxt "#30016"
-msgid "Frameskip > Fixed Frameskip"
-msgstr ""
-
-msgctxt "#30017"
-msgid "Timing > Allow Timing Inaccuracies"
-msgstr ""
-
 msgctxt "#30018"
 msgid "Timing > Frame rate cap"
 msgstr ""
@@ -174,4 +158,12 @@ msgstr ""
 
 msgctxt "#30044"
 msgid "Video > Hardware acceleration"
+msgstr ""
+
+msgctxt "#30045"
+msgid "Video > GUI aspect ratio"
+msgstr ""
+
+msgctxt "#30046"
+msgid "Video > GUI resolution"
 msgstr ""
