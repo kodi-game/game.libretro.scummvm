@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: game.libretro.scummvm\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: 2018-05-13 09:24i\n"
-"PO-Revision-Date: 2025-04-06 19:03+0000\n"
+"PO-Revision-Date: 2025-04-10 14:48+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://kodi.weblate.cloud/projects/kodi-add-ons-game/game-libretro-scummvm/sv_se/>\n"
 "Language: sv_se\n"
@@ -27,147 +27,147 @@ msgstr "ScummVM är en samling återskapade spelmotorer. ScummVM emulerar flera 
 
 msgctxt "#30007"
 msgid "Cursor > Exclusive cursor control with RetroPad"
-msgstr ""
+msgstr "Markör > Exklusiv markörstyrning med RetroPad"
 
 msgctxt "#30008"
 msgid "Cursor > Gamepad Cursor Speed"
-msgstr ""
+msgstr "Markör > Gamepad-markörens hastighet"
 
 msgctxt "#30009"
 msgid "Cursor > Gamepad Cursor Acceleration"
-msgstr ""
+msgstr "Markör > Acceleration av markör för gamepad"
 
 msgctxt "#30010"
 msgid "Cursor > Analog Cursor Response"
-msgstr ""
+msgstr "Markör > Respons från analog markör"
 
 msgctxt "#30011"
 msgid "Cursor > Analog Deadzone"
-msgstr ""
+msgstr "Markör > Analog dödzon"
 
 msgctxt "#30012"
 msgid "Cursor > Mouse Speed"
-msgstr ""
+msgstr "Markör > Musens hastighet"
 
 msgctxt "#30013"
 msgid "Cursor > Mouse Fine Control Speed Reduction"
-msgstr ""
+msgstr "Markör > Hastighetsreducering för finstyrning av musen"
 
 msgctxt "#30018"
 msgid "Timing > Frame rate cap"
-msgstr ""
+msgstr "Timing > Bildrutebegränsning"
 
 msgctxt "#30019"
 msgid "Timing > Sample rate"
-msgstr ""
+msgstr "Timing > Samplingsfrekvens"
 
 msgctxt "#30020"
 msgid "RetroPad > Up"
-msgstr ""
+msgstr "RetroPad > Upp"
 
 msgctxt "#30021"
 msgid "RetroPad > Down"
-msgstr ""
+msgstr "RetroPad > Ner"
 
 msgctxt "#30022"
 msgid "RetroPad > Left"
-msgstr ""
+msgstr "RetroPad > Vänster"
 
 msgctxt "#30023"
 msgid "RetroPad > Right"
-msgstr ""
+msgstr "RetroPad > Höger"
 
 msgctxt "#30024"
 msgid "RetroPad > A"
-msgstr ""
+msgstr "RetroPad > A"
 
 msgctxt "#30025"
 msgid "RetroPad > B"
-msgstr ""
+msgstr "RetroPad > B"
 
 msgctxt "#30026"
 msgid "RetroPad > X"
-msgstr ""
+msgstr "RetroPad > X"
 
 msgctxt "#30027"
 msgid "RetroPad > Y"
-msgstr ""
+msgstr "RetroPad > Y"
 
 msgctxt "#30028"
 msgid "RetroPad > Select"
-msgstr ""
+msgstr "RetroPad > Select"
 
 msgctxt "#30029"
 msgid "RetroPad > Start"
-msgstr ""
+msgstr "RetroPad > Start"
 
 msgctxt "#30030"
 msgid "RetroPad > L"
-msgstr ""
+msgstr "RetroPad > L"
 
 msgctxt "#30031"
 msgid "RetroPad > R"
-msgstr ""
+msgstr "RetroPad > R"
 
 msgctxt "#30032"
 msgid "RetroPad > L2"
-msgstr ""
+msgstr "RetroPad > L2"
 
 msgctxt "#30033"
 msgid "RetroPad > R2"
-msgstr ""
+msgstr "RetroPad > R2"
 
 msgctxt "#30034"
 msgid "RetroPad > L3"
-msgstr ""
+msgstr "RetroPad > L3"
 
 msgctxt "#30035"
 msgid "RetroPad > R3"
-msgstr ""
+msgstr "RetroPad > R3"
 
 msgctxt "#30036"
 msgid "RetroPad > Left Analog > Up"
-msgstr ""
+msgstr "RetroPad > Vänster analog > Upp"
 
 msgctxt "#30037"
 msgid "RetroPad > Left Analog > Down"
-msgstr ""
+msgstr "RetroPad > Vänster analog > Ner"
 
 msgctxt "#30038"
 msgid "RetroPad > Left Analog > Left"
-msgstr ""
+msgstr "RetroPad > Vänster analog > Vänster"
 
 msgctxt "#30039"
 msgid "RetroPad > Left Analog > Right"
-msgstr ""
+msgstr "RetroPad > Vänster analog > Höger"
 
 msgctxt "#30040"
 msgid "RetroPad > Right Analog > Up"
-msgstr ""
+msgstr "RetroPad > Höger analog > Upp"
 
 msgctxt "#30041"
 msgid "RetroPad > Right Analog > Down"
-msgstr ""
+msgstr "RetroPad > Höger analog > Ner"
 
 msgctxt "#30042"
 msgid "RetroPad > Right Analog > Left"
-msgstr ""
+msgstr "RetroPad > Höger analog > Vänster"
 
 msgctxt "#30043"
 msgid "RetroPad > Right Analog > Right"
-msgstr ""
+msgstr "RetroPad > Höger analog > Höger"
 
 msgctxt "#30044"
 msgid "Video > Hardware acceleration"
-msgstr ""
+msgstr "Video > Hårdvaruacceleration"
 
 msgctxt "#30045"
 msgid "Video > GUI aspect ratio"
-msgstr ""
+msgstr "Video > Bildförhållande för gränssnitt"
 
 msgctxt "#30046"
 msgid "Video > GUI resolution"
-msgstr ""
+msgstr "Video > Upplösning för gränssnitt"
 
 #~ msgctxt "#30000"
 #~ msgid "Settings"
