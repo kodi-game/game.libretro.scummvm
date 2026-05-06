@@ -1,4 +1,4 @@
-From 3d4f4f65fe914039a725675dc53f7c3629a00c34 Mon Sep 17 00:00:00 2001
+From cf0ad32521d54caa8083c7fc19f42db2eb3c0d2e Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Tue, 17 Jan 2023 12:13:29 -0800
 Subject: [PATCH 2/3] LIBRETRO: Fix missing library version

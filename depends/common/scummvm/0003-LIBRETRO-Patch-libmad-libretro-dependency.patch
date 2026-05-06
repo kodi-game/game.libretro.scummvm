@@ -1,4 +1,4 @@
-From 4e7b3fc86c0c39ddb376ecb76b22fd816e6af0ee Mon Sep 17 00:00:00 2001
+From a61d9fc8f8cd9b40800a7aa06f5bc1f62ee100b1 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Wed, 17 Jul 2024 18:10:03 -0700
 Subject: [PATCH 3/3] LIBRETRO: Patch libmad libretro dependency
