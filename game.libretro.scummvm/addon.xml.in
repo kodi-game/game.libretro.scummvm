@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="game.libretro.scummvm"
 		name="ScummVM"
-		version="2.10.0.52"
+		version="0.0.1.53"
 		provider-name="SCUMMVMdev">
 	<requires>
 		<import addon="game.libretro" version="1.0.0"/>
@@ -12,10 +12,11 @@
 	<extension point="kodi.gameclient"
 			library_@PLATFORM@="@LIBRARY_FILENAME@">
 		<platforms></platforms>
-		<extensions>scummvm</extensions>
+		<extensions></extensions>
 		<supports_vfs>false</supports_vfs>
-		<supports_standalone>true</supports_standalone>
-		<requires_opengl>false</requires_opengl>
+		<supports_standalone>false</supports_standalone>
+		<supports_disc_control>false</supports_disc_control>
+		<requires_opengl>true</requires_opengl>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<license>GPLv3</license>
