@@ -25,12 +25,888 @@ msgctxt "Addon Description"
 msgid "ScummVM is a collection of game engine recreations. ScummVM emulates several systems, including the SCUMM system for LucasArts adventure games."
 msgstr "ScummVM è una raccolta di ricostruzioni di motori grafici per videogiochi. ScummVM emula diversi sistemi, tra cui il sistema SCUMM per i giochi d'avventura di LucasArts."
 
+msgctxt "#30001"
+msgid "Video settings"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Configure video settings"
+msgstr "Configura le impostazioni video"
+
+msgctxt "#30003"
+msgid "Hardware acceleration"
+msgstr "Video > Accelerazione hardware"
+
+msgctxt "#30005"
+msgid "ScummVM Launcher aspect ratio"
+msgstr "Video > Rapporto aspetto GUI"
+
+msgctxt "#30006"
+msgid "Set ScummVM Launcher aspect ratio."
+msgstr "Imposta il rapporto d'aspetto per ScummVM Launcher."
+
+msgctxt "#30007"
+msgid "4:3"
+msgstr ""
+
+msgctxt "#30008"
+msgid "16:9"
+msgstr ""
+
+msgctxt "#30009"
+msgid "ScummVM Launcher resolution"
+msgstr "Video > Risoluzione GUI"
+
+msgctxt "#30010"
+msgid "Set ScummVM Launcher resolution."
+msgstr "Imposta la risoluzione per ScummVM Launcher."
+
+msgctxt "#30011"
+msgid "LD"
+msgstr ""
+
+msgctxt "#30012"
+msgid "SD"
+msgstr ""
+
+msgctxt "#30013"
+msgid "HD"
+msgstr ""
+
+msgctxt "#30014"
+msgid "FHD"
+msgstr ""
+
+msgctxt "#30015"
+msgid "Cursor Movement"
+msgstr "Cursore"
+
+msgctxt "#30016"
+msgid "Configure cursor movement settings"
+msgstr "Impostazioni relative al movimento del cursore"
+
+msgctxt "#30017"
+msgid "Pointer Device"
+msgstr "Cursore > Dispositivo di Puntamento"
+
+msgctxt "#30018"
+msgid "Select which device controls the cursor."
+msgstr "Selezione del dispositivo che controlla il cursore."
+
+msgctxt "#30019"
+msgid "RetroPad only"
+msgstr "solo RetroPad"
+
+msgctxt "#30020"
+msgid "RetroPad + RetroMouse"
+msgstr ""
+
+msgctxt "#30021"
+msgid "RetroPad + Pointer"
+msgstr ""
+
+msgctxt "#30022"
+msgid "Gamepad Cursor Speed"
+msgstr "Cursore > Velocità del cursore"
+
+msgctxt "#30023"
+msgid "Sets the mouse cursor speed multiplier when moving the cursor with the RetroPad left analog stick or D-Pad. The default value of '1.0' is optimised for games that have a native resolution of '320x200' or '320x240'. When running 'high definition' games with a resolution of '640x400' or '640x480', a Gamepad Cursor Speed of '2.0' is recommended."
+msgstr "Moltiplicatore della velocità del cursore del mouse quando si usa la leva analogica sinistra o il D-Pad del RetroPad. Il valore di default di '1.0' è ottimizzato per i giochi con risoluzione nativa di '320x200' o '320x240'. Per i giochi ad 'alta definizione' con risoluzione di '640x400' or '640x480', si raccomanda il valore di '2.0'"
+
+msgctxt "#30024"
+msgid "Gamepad Cursor Acceleration"
+msgstr "Cursore > Accelerazione del cursore"
+
+msgctxt "#30026"
+msgid "0.1"
+msgstr ""
+
+msgctxt "#30028"
+msgid "0.3"
+msgstr ""
+
+msgctxt "#30029"
+msgid "0.4"
+msgstr ""
+
+msgctxt "#30030"
+msgid "0.5"
+msgstr ""
+
+msgctxt "#30031"
+msgid "0.6"
+msgstr ""
+
+msgctxt "#30032"
+msgid "0.7"
+msgstr ""
+
+msgctxt "#30033"
+msgid "0.8"
+msgstr ""
+
+msgctxt "#30034"
+msgid "0.9"
+msgstr ""
+
+msgctxt "#30035"
+msgid "1.0"
+msgstr ""
+
+msgctxt "#30036"
+msgid "Analog Cursor Response"
+msgstr "Cursore > Risposta analogica del cursore"
+
+msgctxt "#30037"
+msgid "Determines how the speed of the cursor varies when tilting the RetroPad left analog stick. 'Linear': Speed is directly proportional to analog stick displacement. This is standard behaviour with which most users will be familiar. 'Quadratic': Speed increases quadratically with analog stick displacement. This allows for greater precision when making small movements without sacrificing maximum speed at full analog range. This mode may require practice for effective use."
+msgstr "Modalità di risposta della velocità del cursore del mouse allo spostamento della leva analogica sinistra del RetroPad. 'Lineare': La velocità è direttamente proporzionale allo spostamento della leva. Questa è l'impostazione di default adatta alla maggior parte degli utenti. 'Quadratica': La velocità aumenta con il quadrato dello spostamento della leva. Questo permette maggior precisione nei piccoli movimenti senza sacrificare il raggiungimento della velocità massima a spostamento completo. Questa modalità può richiedere pratica per un uso efficace."
+
+msgctxt "#30038"
+msgid "Linear"
+msgstr "Lineare"
+
+msgctxt "#30039"
+msgid "Quadratic"
+msgstr "Quadratica"
+
+msgctxt "#30040"
+msgid "Analog Deadzone"
+msgstr "Cursore > Zona morta analogica"
+
+msgctxt "#30041"
+msgid "Sets the deadzone in percentage of the RetroPad analog sticks. Used to eliminate cursor drift/unwanted input."
+msgstr "Zona morta percentuale delle leve analogiche del RetroPad. Può essere usata per eliminare scorrimenti indesiderati del cursore."
+
+msgctxt "#30042"
+msgid "0 %"
+msgstr ""
+
+msgctxt "#30043"
+msgid "5 %"
+msgstr ""
+
+msgctxt "#30044"
+msgid "10 %"
+msgstr ""
+
+msgctxt "#30045"
+msgid "15 %"
+msgstr ""
+
+msgctxt "#30046"
+msgid "20 %"
+msgstr ""
+
+msgctxt "#30047"
+msgid "25 %"
+msgstr ""
+
+msgctxt "#30048"
+msgid "30 %"
+msgstr ""
+
+msgctxt "#30049"
+msgid "Mouse Speed"
+msgstr "Cursore > Velocità del mouse"
+
+msgctxt "#30050"
+msgid "Sets the mouse cursor speed multiplier when moving the cursor with the RetroMouse."
+msgstr "Moltiplicatore della velocità del cursore del mouse quando si usa RetroMouse."
+
+msgctxt "#30051"
+msgid "Mouse Fine Control Speed Reduction"
+msgstr "Cursore > Riduzione velocità con controllo fine del mouse"
+
+msgctxt "#30052"
+msgid "Sets the mouse cursor speed reduction as percentage of normal speed when fine control is activated."
+msgstr "Riduzione della velocità del cursore del mouse come percentuale della velocità normale quando il controllo fine è attivato."
+
+msgctxt "#30053"
+msgid "50 %"
+msgstr ""
+
+msgctxt "#30054"
+msgid "Timing"
+msgstr ""
+
+msgctxt "#30055"
+msgid "Configure timing settings"
+msgstr "Impostazioni relative al timing"
+
+msgctxt "#30056"
+msgid "Frame rate cap"
+msgstr "Timing > Tetto frequenza dei fotogrammi"
+
+msgctxt "#30057"
+msgid "Set core frame rate upper limit. Reducing the limit will improve the performance on lower end devices. Changing this setting will reset the core."
+msgstr "Imposta il limite superiore della frequenza dei fotogrammi. La riduzione del limite migliora le prestazioni sui dispositivi di fascia bassa. Il cambio di questa impostazione causerà il reset del core."
+
+msgctxt "#30058"
+msgid "60 Hz"
+msgstr ""
+
+msgctxt "#30059"
+msgid "50 Hz"
+msgstr ""
+
+msgctxt "#30060"
+msgid "30 Hz"
+msgstr ""
+
+msgctxt "#30061"
+msgid "25 Hz"
+msgstr ""
+
+msgctxt "#30062"
+msgid "Sample rate"
+msgstr "Timing > Frequenza di campionamento"
+
+msgctxt "#30063"
+msgid "Set core sample rate. Reducing the rate will slightly improve the performance on lower end devices. Changing this setting will reset the core."
+msgstr "Imposta la frequenza di campionamento. La riduzione della frequenza migliora leggermente le prestazioni sui dispositivi di fascia bassa. Il cambio di questa impostazione causerà il reset del core."
+
+msgctxt "#30064"
+msgid "RetroPad mapping"
+msgstr "Mappatura RetroPad"
+
+msgctxt "#30065"
+msgid "Configure RetroPad mapping"
+msgstr "Configura la mappatura del RetroPad"
+
+msgctxt "#30066"
+msgid "Up"
+msgstr "RetroPad > Su"
+
+msgctxt "#30067"
+msgid "---"
+msgstr ""
+
+msgctxt "#30068"
+msgid "Toggle Virtual Keyboard"
+msgstr "Attiva/disattiva Tastiera Virtuale"
+
+msgctxt "#30069"
+msgid "Mouse Cursor Left"
+msgstr "Cursore Mouse Sinistra"
+
+msgctxt "#30070"
+msgid "Mouse Cursor Up"
+msgstr "Cursore Mouse Su"
+
+msgctxt "#30071"
+msgid "Mouse Cursor Down"
+msgstr "Cursore Mouse Giù"
+
+msgctxt "#30072"
+msgid "Mouse Cursor Right"
+msgstr "Cursore Mouse Destra"
+
+msgctxt "#30073"
+msgid "Mouse Left Button"
+msgstr "Tasto Mouse Sinistra"
+
+msgctxt "#30074"
+msgid "Mouse Right Button"
+msgstr "Tasto Mouse Destra"
+
+msgctxt "#30075"
+msgid "Mouse Cursor Fine Control"
+msgstr "Controllo Fine Cursore Mouse"
+
+msgctxt "#30076"
+msgid "ScummVM GUI"
+msgstr ""
+
+msgctxt "#30077"
+msgid "Keyboard Shift (Modifier)"
+msgstr "Tastiera Shift (Modificatore)"
+
+msgctxt "#30078"
+msgid "Keyboard Control (Modifier)"
+msgstr "Tastiera Control (Modificatore)"
+
+msgctxt "#30079"
+msgid "Keyboard Alt (Modifier)"
+msgstr "Tastiera Alt (Modificatore)"
+
+msgctxt "#30080"
+msgid "Keyboard Backspace"
+msgstr "Tastiera Backspace"
+
+msgctxt "#30081"
+msgid "Keyboard Tab"
+msgstr "Tastiera Tab"
+
+msgctxt "#30082"
+msgid "Keyboard Clear"
+msgstr "Tastiera Clear"
+
+msgctxt "#30083"
+msgid "Keyboard Return"
+msgstr "Tastiera Return"
+
+msgctxt "#30084"
+msgid "Keyboard Pause"
+msgstr "Tastiera Pause"
+
+msgctxt "#30085"
+msgid "Keyboard Escape"
+msgstr "Tastiera Escape"
+
+msgctxt "#30086"
+msgid "Keyboard Space"
+msgstr "Tastiera Space"
+
+msgctxt "#30087"
+msgid "Keyboard !"
+msgstr "Tastiera !"
+
+msgctxt "#30088"
+msgid "Keyboard \""
+msgstr "Tastiera \""
+
+msgctxt "#30089"
+msgid "Keyboard #"
+msgstr "Tastiera #"
+
+msgctxt "#30090"
+msgid "Keyboard $"
+msgstr "Tastiera $"
+
+msgctxt "#30091"
+msgid "Keyboard &"
+msgstr "Tastiera &"
+
+msgctxt "#30092"
+msgid "Keyboard '"
+msgstr "Tastiera '"
+
+msgctxt "#30093"
+msgid "Keyboard ("
+msgstr "Tastiera ("
+
+msgctxt "#30094"
+msgid "Keyboard )"
+msgstr "Tastiera )"
+
+msgctxt "#30095"
+msgid "Keyboard *"
+msgstr "Tastiera *"
+
+msgctxt "#30096"
+msgid "Keyboard +"
+msgstr "Tastiera +"
+
+msgctxt "#30097"
+msgid "Keyboard ,"
+msgstr "Tastiera ,"
+
+msgctxt "#30098"
+msgid "Keyboard -"
+msgstr "Tastiera -"
+
+msgctxt "#30099"
+msgid "Keyboard ."
+msgstr "Tastiera ."
+
+msgctxt "#30100"
+msgid "Keyboard /"
+msgstr "Tastiera /"
+
+msgctxt "#30101"
+msgid "Keyboard 0"
+msgstr "Tastiera 0"
+
+msgctxt "#30102"
+msgid "Keyboard 1"
+msgstr "Tastiera 1"
+
+msgctxt "#30103"
+msgid "Keyboard 2"
+msgstr "Tastiera 2"
+
+msgctxt "#30104"
+msgid "Keyboard 3"
+msgstr "Tastiera 3"
+
+msgctxt "#30105"
+msgid "Keyboard 4"
+msgstr "Tastiera 4"
+
+msgctxt "#30106"
+msgid "Keyboard 5"
+msgstr "Tastiera 5"
+
+msgctxt "#30107"
+msgid "Keyboard 6"
+msgstr "Tastiera 6"
+
+msgctxt "#30108"
+msgid "Keyboard 7"
+msgstr "Tastiera 7"
+
+msgctxt "#30109"
+msgid "Keyboard 8"
+msgstr "Tastiera 8"
+
+msgctxt "#30110"
+msgid "Keyboard 9"
+msgstr "Tastiera 9"
+
+msgctxt "#30111"
+msgid "Keyboard :"
+msgstr "Tastiera :"
+
+msgctxt "#30112"
+msgid "Keyboard ;"
+msgstr "Tastiera ;"
+
+msgctxt "#30113"
+msgid "Keyboard <"
+msgstr "Tastiera <"
+
+msgctxt "#30114"
+msgid "Keyboard ="
+msgstr "Tastiera ="
+
+msgctxt "#30115"
+msgid "Keyboard >"
+msgstr "Tastiera >"
+
+msgctxt "#30116"
+msgid "Keyboard ?"
+msgstr "Tastiera ?"
+
+msgctxt "#30117"
+msgid "Keyboard @"
+msgstr "Tastiera @"
+
+msgctxt "#30118"
+msgid "Keyboard ["
+msgstr "Tastiera ["
+
+msgctxt "#30119"
+msgid "Keyboard \\"
+msgstr "Tastiera \\"
+
+msgctxt "#30120"
+msgid "Keyboard ]"
+msgstr "Tastiera ]"
+
+msgctxt "#30121"
+msgid "Keyboard ^"
+msgstr "Tastiera ^"
+
+msgctxt "#30122"
+msgid "Keyboard _"
+msgstr "Tastiera _"
+
+msgctxt "#30123"
+msgid "Keyboard `"
+msgstr "Tastiera `"
+
+msgctxt "#30124"
+msgid "Keyboard a"
+msgstr "Tastiera a"
+
+msgctxt "#30125"
+msgid "Keyboard b"
+msgstr "Tastiera b"
+
+msgctxt "#30126"
+msgid "Keyboard c"
+msgstr "Tastiera c"
+
+msgctxt "#30127"
+msgid "Keyboard d"
+msgstr "Tastiera d"
+
+msgctxt "#30128"
+msgid "Keyboard e"
+msgstr "Tastiera e"
+
+msgctxt "#30129"
+msgid "Keyboard f"
+msgstr "Tastiera f"
+
+msgctxt "#30130"
+msgid "Keyboard g"
+msgstr "Tastiera g"
+
+msgctxt "#30131"
+msgid "Keyboard h"
+msgstr "Tastiera h"
+
+msgctxt "#30132"
+msgid "Keyboard i"
+msgstr "Tastiera i"
+
+msgctxt "#30133"
+msgid "Keyboard j"
+msgstr "Tastiera j"
+
+msgctxt "#30134"
+msgid "Keyboard k"
+msgstr "Tastiera k"
+
+msgctxt "#30135"
+msgid "Keyboard l"
+msgstr "Tastiera l"
+
+msgctxt "#30136"
+msgid "Keyboard m"
+msgstr "Tastiera m"
+
+msgctxt "#30137"
+msgid "Keyboard n"
+msgstr "Tastiera n"
+
+msgctxt "#30138"
+msgid "Keyboard o"
+msgstr "Tastiera o"
+
+msgctxt "#30139"
+msgid "Keyboard p"
+msgstr "Tastiera p"
+
+msgctxt "#30140"
+msgid "Keyboard q"
+msgstr "Tastiera q"
+
+msgctxt "#30141"
+msgid "Keyboard r"
+msgstr "Tastiera r"
+
+msgctxt "#30142"
+msgid "Keyboard s"
+msgstr "Tastiera s"
+
+msgctxt "#30143"
+msgid "Keyboard t"
+msgstr "Tastiera t"
+
+msgctxt "#30144"
+msgid "Keyboard u"
+msgstr "Tastiera u"
+
+msgctxt "#30145"
+msgid "Keyboard v"
+msgstr "Tastiera v"
+
+msgctxt "#30146"
+msgid "Keyboard w"
+msgstr "Tastiera w"
+
+msgctxt "#30147"
+msgid "Keyboard x"
+msgstr "Tastiera x"
+
+msgctxt "#30148"
+msgid "Keyboard y"
+msgstr "Tastiera y"
+
+msgctxt "#30149"
+msgid "Keyboard z"
+msgstr "Tastiera z"
+
+msgctxt "#30150"
+msgid "Keyboard Numpad 0"
+msgstr "Tastiera Numpad 0"
+
+msgctxt "#30151"
+msgid "Keyboard Numpad 1"
+msgstr "Tastiera Numpad 1"
+
+msgctxt "#30152"
+msgid "Keyboard Numpad 2"
+msgstr "Tastiera Numpad 2"
+
+msgctxt "#30153"
+msgid "Keyboard Numpad 3"
+msgstr "Tastiera Numpad 3"
+
+msgctxt "#30154"
+msgid "Keyboard Numpad 4"
+msgstr "Tastiera Numpad 4"
+
+msgctxt "#30155"
+msgid "Keyboard Numpad 5"
+msgstr "Tastiera Numpad 5"
+
+msgctxt "#30156"
+msgid "Keyboard Numpad 6"
+msgstr "Tastiera Numpad 6"
+
+msgctxt "#30157"
+msgid "Keyboard Numpad 7"
+msgstr "Tastiera Numpad 7"
+
+msgctxt "#30158"
+msgid "Keyboard Numpad 8"
+msgstr "Tastiera Numpad 8"
+
+msgctxt "#30159"
+msgid "Keyboard Numpad 9"
+msgstr "Tastiera Numpad 9"
+
+msgctxt "#30160"
+msgid "Keyboard Numpad ."
+msgstr "Tastiera Numpad ."
+
+msgctxt "#30161"
+msgid "Keyboard Numpad /"
+msgstr "Tastiera Numpad /"
+
+msgctxt "#30162"
+msgid "Keyboard Numpad *"
+msgstr "Tastiera Numpad *"
+
+msgctxt "#30163"
+msgid "Keyboard Numpad -"
+msgstr "Tastiera Numpad -"
+
+msgctxt "#30164"
+msgid "Keyboard Numpad +"
+msgstr "Tastiera Numpad +"
+
+msgctxt "#30165"
+msgid "Keyboard Numpad Enter"
+msgstr "Tastiera Numpad Enter"
+
+msgctxt "#30166"
+msgid "Keyboard Numpad ="
+msgstr "Tastiera Numpad ="
+
+msgctxt "#30167"
+msgid "Keyboard Up"
+msgstr "Tastiera Su"
+
+msgctxt "#30168"
+msgid "Keyboard Down"
+msgstr "Tastiera Giù"
+
+msgctxt "#30169"
+msgid "Keyboard Left"
+msgstr "Tastiera Sinistra"
+
+msgctxt "#30170"
+msgid "Keyboard Right"
+msgstr "Tastiera Destra"
+
+msgctxt "#30171"
+msgid "Keyboard Insert"
+msgstr "Tastiera Insert"
+
+msgctxt "#30172"
+msgid "Keyboard Delete"
+msgstr "Tastiera Delete"
+
+msgctxt "#30173"
+msgid "Keyboard Home"
+msgstr "Tastiera Home"
+
+msgctxt "#30174"
+msgid "Keyboard End"
+msgstr "Tastiera End"
+
+msgctxt "#30175"
+msgid "Keyboard PageUp"
+msgstr "Tastiera PageUp"
+
+msgctxt "#30176"
+msgid "Keyboard PageDown"
+msgstr "Tastiera PageDown"
+
+msgctxt "#30177"
+msgid "Keyboard F1"
+msgstr "Tastiera F1"
+
+msgctxt "#30178"
+msgid "Keyboard F2"
+msgstr "Tastiera F2"
+
+msgctxt "#30179"
+msgid "Keyboard F3"
+msgstr "Tastiera F3"
+
+msgctxt "#30180"
+msgid "Keyboard F4"
+msgstr "Tastiera F4"
+
+msgctxt "#30181"
+msgid "Keyboard F5"
+msgstr "Tastiera F5"
+
+msgctxt "#30182"
+msgid "Keyboard F6"
+msgstr "Tastiera F6"
+
+msgctxt "#30183"
+msgid "Keyboard F7"
+msgstr "Tastiera F7"
+
+msgctxt "#30184"
+msgid "Keyboard F8"
+msgstr "Tastiera F8"
+
+msgctxt "#30185"
+msgid "Keyboard F9"
+msgstr "Tastiera F9"
+
+msgctxt "#30186"
+msgid "Keyboard F10"
+msgstr "Tastiera F10"
+
+msgctxt "#30187"
+msgid "Keyboard F11"
+msgstr "Tastiera F11"
+
+msgctxt "#30188"
+msgid "Keyboard F12"
+msgstr "Tastiera F12"
+
+msgctxt "#30189"
+msgid "Keyboard Left Shift"
+msgstr "Tastiera Shift Sinistra"
+
+msgctxt "#30190"
+msgid "Keyboard Right Shift"
+msgstr "Tastiera Shift Destra"
+
+msgctxt "#30191"
+msgid "Keyboard Left Control"
+msgstr "Tastiera Control Sinistra"
+
+msgctxt "#30192"
+msgid "Keyboard Right Control"
+msgstr "Tastiera Control Destra"
+
+msgctxt "#30193"
+msgid "Keyboard Left Alt"
+msgstr "Tastiera Alt Sinistra"
+
+msgctxt "#30194"
+msgid "Down"
+msgstr "RetroPad > Giù"
+
+msgctxt "#30195"
+msgid "Left"
+msgstr "RetroPad > Sinistra"
+
+msgctxt "#30196"
+msgid "Right"
+msgstr "RetroPad > Destra"
+
+msgctxt "#30197"
+msgid "A"
+msgstr "RetroPad > A"
+
+msgctxt "#30198"
+msgid "B"
+msgstr "RetroPad > B"
+
+msgctxt "#30199"
+msgid "X"
+msgstr "RetroPad > X"
+
+msgctxt "#30200"
+msgid "Y"
+msgstr "RetroPad > Y"
+
+msgctxt "#30201"
+msgid "Select"
+msgstr "RetroPad > Select"
+
+msgctxt "#30202"
+msgid "Start"
+msgstr "RetroPad > Start"
+
+msgctxt "#30203"
+msgid "L"
+msgstr "RetroPad > L"
+
+msgctxt "#30204"
+msgid "R"
+msgstr "RetroPad > R"
+
+msgctxt "#30205"
+msgid "L2"
+msgstr "RetroPad > L2"
+
+msgctxt "#30206"
+msgid "R2"
+msgstr "RetroPad > R2"
+
+msgctxt "#30207"
+msgid "L3"
+msgstr "RetroPad > L3"
+
+msgctxt "#30208"
+msgid "R3"
+msgstr "RetroPad > R3"
+
+msgctxt "#30209"
+msgid "Left Analog > Up"
+msgstr "RetroPad > Leva Analogica Sinistra > Su"
+
+msgctxt "#30210"
+msgid "Left Analog > Down"
+msgstr "RetroPad > Leva Analogica Sinistra > Giù"
+
+msgctxt "#30211"
+msgid "Left Analog > Left"
+msgstr "RetroPad > Leva Analogica Sinistra > Sinistra"
+
+msgctxt "#30212"
+msgid "Left Analog > Right"
+msgstr "RetroPad > Leva Analogica Sinistra > Destra"
+
+msgctxt "#30213"
+msgid "Right Analog > Up"
+msgstr "RetroPad > Leva Analogica Destra > Su"
+
+msgctxt "#30214"
+msgid "Right Analog > Down"
+msgstr "RetroPad > Leva Analogica Destra > Giù"
+
+msgctxt "#30215"
+msgid "Right Analog > Left"
+msgstr "RetroPad > Leva Analogica Destra > Sinistra"
+
+msgctxt "#30216"
+msgid "Right Analog > Right"
+msgstr "RetroPad > Leva Analogica Destra > Destra"
+
+msgctxt "#30217"
+msgid "System"
+msgstr "Sistema"
+
+msgctxt "#30218"
+msgid "Configure system settings"
+msgstr "Configura le impostazioni di sistema"
+
+msgctxt "#30219"
+msgid "Browsing mode"
+msgstr "Sistema > Modalità di navigazione"
+
+msgctxt "#30220"
+msgid "Select how the ScummVM file browser lists locations. 'Authorized storage' shows the folders authorized through the frontend (e.g. Android SAF trees). 'Local filesystem' browses the standard local paths."
+msgstr "Seleziona come il file browser di ScummVM elenca le posizioni. 'Archiviazione autorizzata' mostra le cartelle autorizzate tramite il frontend (es. tree SAF di Android). 'File system locale' naviga i percorsi locali standard."
+
+msgctxt "#30221"
+msgid "Local filesystem"
+msgstr "File system locale"
+
+msgctxt "#30222"
+msgid "Authorized storage"
+msgstr "Archiviazione autorizzata"
+
 #~ msgctxt "#30025"
-#~ msgid "RetroPad > B"
-#~ msgstr "RetroPad > B"
+#~ msgid "The amount of time (In seconds) it takes for the cursor to reach full speed"
+#~ msgstr "Il tempo (in secondi) necessario al cursore del mouse per raggiungere la piena velocità quando si usa la leva analogica sinistra o il D-Pad del RetroPad."
 
 #~ msgctxt "#30027"
-#~ msgid "RetroPad > Y"
+#~ msgid "0.2"
 #~ msgstr "RetroPad > Y"
 
 #~ msgctxt "#30000"
@@ -38,5 +914,5 @@ msgstr "ScummVM è una raccolta di ricostruzioni di motori grafici per videogioc
 #~ msgstr "Impostazioni"
 
 #~ msgctxt "#30004"
-#~ msgid "Analog Deadzone (Percent)"
-#~ msgstr "Zona morta analogica (percentuale)"
+#~ msgid "Request video hardware acceleration (OpenGL or OpenGLES2) to the frontend if supported. It is needed to reload the core to apply this setting."
+#~ msgstr "Richiede accelerazione hardware (OpenGL or OpenGLES2) al frontend, se supportata. È necessario ricaricare il core per rendere effettiva questa opzione"
