@@ -1,0 +1,27 @@
+From bf71aedff0fd4956e2dc57a13ef91cc974bcc932 Mon Sep 17 00:00:00 2001
+From: Garrett Brown <themagnificentmrb@gmail.com>
+Date: Wed, 17 Jul 2024 18:10:03 -0700
+Subject: [PATCH 2/2] LIBRETRO: Patch libmad libretro dependency
+
+---
+ backends/platform/libretro/dependencies.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/backends/platform/libretro/dependencies.mk b/backends/platform/libretro/dependencies.mk
+index b518997300f..6a87c8fb7cb 100644
+--- a/backends/platform/libretro/dependencies.mk
++++ b/backends/platform/libretro/dependencies.mk
+@@ -6,8 +6,8 @@
+ DEPS_SUBMODULES             := libretro-deps libretro-common
+ 
+ DEPS_FOLDER_libretro-deps   := libretro-deps
+-DEPS_URL_libretro-deps      := https://github.com/libretro/libretro-deps
+-DEPS_COMMIT_libretro-deps   := bab7d258c451c0e7cba4b6a79f1b062c13efff38
++DEPS_URL_libretro-deps      := https://github.com/kodi-game/libretro-deps
++DEPS_COMMIT_libretro-deps   := 093294285b8aa3267d274b2561d49225cf91110e
+ 
+ DEPS_FOLDER_libretro-common := libretro-common
+ DEPS_URL_libretro-common    := https://github.com/libretro/libretro-common
+-- 
+2.54.0 (Apple Git-157)
+

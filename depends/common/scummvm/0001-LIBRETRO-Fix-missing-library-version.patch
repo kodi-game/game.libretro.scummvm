@@ -1,7 +1,7 @@
 From 2b923e7126cf26c8a13212c45c01ffda32914377 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Tue, 17 Jan 2023 12:13:29 -0800
-Subject: [PATCH] LIBRETRO: Fix missing library version
+Subject: [PATCH 1/2] LIBRETRO: Fix missing library version
 
 ---
  backends/platform/libretro/src/libretro-core.cpp | 2 +-
