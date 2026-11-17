@@ -37,6 +37,10 @@ msgctxt "#30003"
 msgid "Hardware acceleration"
 msgstr "Video > Accelerazione hardware"
 
+msgctxt "#30004"
+msgid "Request video hardware acceleration (OpenGL or OpenGLES2) to the frontend if supported. It is needed to reload the core to apply this setting."
+msgstr "Richiede accelerazione hardware (OpenGL or OpenGLES2) al frontend, se supportata. È necessario ricaricare il core per rendere effettiva questa opzione"
+
 msgctxt "#30005"
 msgid "ScummVM Launcher aspect ratio"
 msgstr "Video > Rapporto aspetto GUI"
@@ -117,9 +121,17 @@ msgctxt "#30024"
 msgid "Gamepad Cursor Acceleration"
 msgstr "Cursore > Accelerazione del cursore"
 
+msgctxt "#30025"
+msgid "The amount of time (In seconds) it takes for the cursor to reach full speed"
+msgstr "Il tempo (in secondi) necessario al cursore del mouse per raggiungere la piena velocità quando si usa la leva analogica sinistra o il D-Pad del RetroPad."
+
 msgctxt "#30026"
 msgid "0.1"
 msgstr ""
+
+msgctxt "#30027"
+msgid "0.2"
+msgstr "RetroPad > Y"
 
 msgctxt "#30028"
 msgid "0.3"
@@ -901,18 +913,6 @@ msgctxt "#30222"
 msgid "Authorized storage"
 msgstr "Archiviazione autorizzata"
 
-#~ msgctxt "#30025"
-#~ msgid "The amount of time (In seconds) it takes for the cursor to reach full speed"
-#~ msgstr "Il tempo (in secondi) necessario al cursore del mouse per raggiungere la piena velocità quando si usa la leva analogica sinistra o il D-Pad del RetroPad."
-
-#~ msgctxt "#30027"
-#~ msgid "0.2"
-#~ msgstr "RetroPad > Y"
-
 #~ msgctxt "#30000"
 #~ msgid "Settings"
 #~ msgstr "Impostazioni"
-
-#~ msgctxt "#30004"
-#~ msgid "Request video hardware acceleration (OpenGL or OpenGLES2) to the frontend if supported. It is needed to reload the core to apply this setting."
-#~ msgstr "Richiede accelerazione hardware (OpenGL or OpenGLES2) al frontend, se supportata. È necessario ricaricare il core per rendere effettiva questa opzione"
