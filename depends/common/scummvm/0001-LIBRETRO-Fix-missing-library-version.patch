@@ -1,17 +1,17 @@
-From cf0ad32521d54caa8083c7fc19f42db2eb3c0d2e Mon Sep 17 00:00:00 2001
+From 2b923e7126cf26c8a13212c45c01ffda32914377 Mon Sep 17 00:00:00 2001
 From: Garrett Brown <themagnificentmrb@gmail.com>
 Date: Tue, 17 Jan 2023 12:13:29 -0800
-Subject: [PATCH 2/3] LIBRETRO: Fix missing library version
+Subject: [PATCH] LIBRETRO: Fix missing library version
 
 ---
  backends/platform/libretro/src/libretro-core.cpp | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/backends/platform/libretro/src/libretro-core.cpp b/backends/platform/libretro/src/libretro-core.cpp
-index 2a59b2a8553..f8639361db2 100644
+index 5cf037d665d..7f51c8064a4 100644
 --- a/backends/platform/libretro/src/libretro-core.cpp
 +++ b/backends/platform/libretro/src/libretro-core.cpp
-@@ -800,7 +800,7 @@ void retro_get_system_info(struct retro_system_info *info) {
+@@ -899,7 +899,7 @@ void retro_get_system_info(struct retro_system_info *info) {
  #else
  #define __GIT_VERSION ""
  #endif
@@ -21,5 +21,5 @@ index 2a59b2a8553..f8639361db2 100644
  	info->need_fullpath = true;
  	info->block_extract = false;
 -- 
-2.50.1 (Apple Git-155)
+2.54.0 (Apple Git-157)
 
