@@ -104,7 +104,7 @@
 				</setting>
 				<setting id="scummvm_analog_deadzone" type="string" label="30040" help="30041">
 					<level>0</level>
-					<default>15</default>
+					<default>0</default>
 					<constraints>
 						<options>
 							<option label="30042">0</option>
